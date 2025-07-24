@@ -51,7 +51,7 @@ const Practices = () => {
       {/* Page Header */}
       <SectionTransition delay={0}>
         <section style={{ 
-          padding: '3rem 1rem',
+          padding: 'clamp(2rem, 5vw, 3rem) clamp(1rem, 3vw, 1.5rem)',
           textAlign: 'center',
           maxWidth: '1200px',
           margin: '0 auto'
@@ -62,16 +62,16 @@ const Practices = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 style={{
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+              fontSize: 'clamp(2.5rem, 6vw, 4rem)',
               fontWeight: '800',
               color: 'var(--gray-900)',
-              marginBottom: '1.5rem',
+              marginBottom: 'clamp(1rem, 3vw, 1.5rem)',
               letterSpacing: '-0.04em'
             }}>
               Práticas de Bem-Estar
             </h1>
             <p style={{
-              fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+              fontSize: 'clamp(1.1rem, 3vw, 1.3rem)',
               color: 'var(--gray-600)',
               maxWidth: '800px',
               margin: '0 auto',
@@ -85,23 +85,23 @@ const Practices = () => {
 
       {/* Meditation Section */}
       <SectionTransition delay={1}>
-        <section style={{ marginBottom: '4rem' }}>
+        <section style={{ marginBottom: 'clamp(2rem, 5vw, 4rem)' }}>
           <div style={{ 
             maxWidth: '1200px', 
             margin: '0 auto', 
-            padding: '0 1rem',
-            marginBottom: '2rem'
+            padding: '0 clamp(1rem, 3vw, 1.5rem)',
+            marginBottom: 'clamp(1.5rem, 3vw, 2rem)'
           }}>
             <div style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '0.75rem',
-              marginBottom: '1rem'
+              gap: 'clamp(0.5rem, 2vw, 0.75rem)',
+              marginBottom: 'clamp(0.8rem, 2vw, 1rem)'
             }}>
               <TokensIcon width={32} height={32} color="var(--primary-600)" />
               <h2 style={{
-                fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+                fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
                 fontWeight: '700',
                 color: 'var(--gray-900)',
                 letterSpacing: '-0.03em',
@@ -117,23 +117,23 @@ const Practices = () => {
 
       {/* Gallery Section */}
       <SectionTransition delay={2}>
-        <section style={{ marginBottom: '4rem' }}>
+        <section style={{ marginBottom: 'clamp(2rem, 5vw, 4rem)' }}>
           <div style={{ 
             maxWidth: '1200px', 
             margin: '0 auto', 
-            padding: '0 1rem',
-            marginBottom: '2rem'
+            padding: '0 clamp(1rem, 3vw, 1.5rem)',
+            marginBottom: 'clamp(1.5rem, 3vw, 2rem)'
           }}>
             <div style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '0.75rem',
-              marginBottom: '1rem'
+              gap: 'clamp(0.5rem, 2vw, 0.75rem)',
+              marginBottom: 'clamp(0.8rem, 2vw, 1rem)'
             }}>
               <ImageIcon width={32} height={32} color="var(--primary-600)" />
               <h2 style={{
-                fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+                fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
                 fontWeight: '700',
                 color: 'var(--gray-900)',
                 letterSpacing: '-0.03em',
@@ -149,22 +149,22 @@ const Practices = () => {
 
       {/* Videos Section */}
       <SectionTransition delay={3}>
-        <section style={{ marginBottom: '4rem' }}>
+        <section style={{ marginBottom: 'clamp(2rem, 5vw, 4rem)' }}>
           <div style={{ 
             maxWidth: '1200px', 
             margin: '0 auto', 
-            padding: '0 1rem'
+            padding: '0 clamp(1rem, 3vw, 1.5rem)'
           }}>
             <div style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '0.75rem',
-              marginBottom: '3rem'
+              gap: 'clamp(0.5rem, 2vw, 0.75rem)',
+              marginBottom: 'clamp(2rem, 4vw, 3rem)'
             }}>
               <VideoIcon width={32} height={32} color="var(--primary-600)" />
               <h2 style={{
-                fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+                fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
                 fontWeight: '700',
                 color: 'var(--gray-900)',
                 letterSpacing: '-0.03em',
@@ -176,8 +176,8 @@ const Practices = () => {
             
             <div className="grid" style={{
               display: 'grid',
-              gap: 'clamp(1.5rem, 3vw, 2.5rem)',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))'
+              gap: 'clamp(1.5rem, 4vw, 2.5rem)',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(280px, 50vw, 350px), 1fr))'
             }}>
               {wellnessVideos.map((video, index) => (
                 <motion.div

@@ -158,9 +158,9 @@ const LovingKindnessVisualizer: React.FC<{ color: string }> = ({ color }) => {
             key={heart.id}
             style={{
               position: 'absolute',
-              left: `${heart.x}px`,
-              top: `${heart.y}px`,
-              fontSize: `${heart.size}rem`,
+              left: `${(heart.x / 300) * 100}%`,
+              top: `${(heart.y / 200) * 100}%`,
+              fontSize: `${heart.size * 0.8}rem`,
               opacity: heart.opacity,
               transform: 'translate(-50%, -50%)',
               transition: 'all 3s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -178,8 +178,8 @@ const LovingKindnessVisualizer: React.FC<{ color: string }> = ({ color }) => {
             position: 'absolute',
             left: '50%',
             top: '50%',
-            width: '100px',
-            height: '100px',
+            width: 'clamp(80px, 15vw, 100px)',
+            height: 'clamp(80px, 15vw, 100px)',
             border: `2px solid ${getCurrentPhaseData().color}40`,
             borderRadius: '50%',
             transform: 'translate(-50%, -50%)',
@@ -188,13 +188,14 @@ const LovingKindnessVisualizer: React.FC<{ color: string }> = ({ color }) => {
         )}
       </div>
 
-      <div style={{ marginBottom: '2rem' }}>
+      <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
         <h3 style={{
           color: getCurrentPhaseData().color,
           fontWeight: '700',
-          fontSize: '1.8rem',
+          fontSize: 'clamp(1.2rem, 4vw, 1.8rem)',
           marginBottom: '1rem',
-          transition: 'color 0.5s ease'
+          transition: 'color 0.5s ease',
+          padding: '0 1rem'
         }}>
           {getPhaseMessage()}
         </h3>
@@ -341,11 +342,11 @@ const LovingKindnessMeditation = () => {
       background: `linear-gradient(135deg, ${technique.color}05 0%, #fdf2f8 100%)` 
     }}>
       <SectionTransition delay={0}>
-        <div style={{ padding: '2rem 1rem' }}>
+        <div style={{ padding: 'clamp(1rem, 4vw, 2rem) clamp(0.5rem, 2vw, 1rem)' }}>
           <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
             
             {/* Header com botão voltar */}
-            <div style={{ marginBottom: '3rem' }}>
+            <div style={{ marginBottom: 'clamp(1.5rem, 4vw, 3rem)' }}>
               <Link
                 to="/meditation"
                 style={{
@@ -354,10 +355,10 @@ const LovingKindnessMeditation = () => {
                   gap: '0.5rem',
                   color: technique.color,
                   textDecoration: 'none',
-                  fontSize: '1.1rem',
+                  fontSize: 'clamp(1rem, 2.5vw, 1.1rem)',
                   fontWeight: '600',
                   marginBottom: '2rem',
-                  padding: '0.8rem 1.5rem',
+                  padding: 'clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem)',
                   background: `${technique.color}10`,
                   borderRadius: '25px',
                   transition: 'all 0.3s ease'
@@ -371,19 +372,19 @@ const LovingKindnessMeditation = () => {
                   e.currentTarget.style.transform = 'translateX(0)';
                 }}
               >
-                <ArrowLeftIcon style={{ width: '1.2rem', height: '1.2rem' }} />
+                <ArrowLeftIcon style={{ width: 'clamp(1rem, 2.5vw, 1.2rem)', height: 'clamp(1rem, 2.5vw, 1.2rem)' }} />
                 Voltar às Técnicas
               </Link>
 
               <div style={{ textAlign: 'center' }}>
                 <div style={{
-                  fontSize: '4rem',
+                  fontSize: 'clamp(2.5rem, 8vw, 4rem)',
                   marginBottom: '1rem'
                 }}>
                   {technique.icon}
                 </div>
                 <h1 style={{
-                  fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+                  fontSize: 'clamp(2rem, 6vw, 4rem)',
                   fontWeight: '700',
                   color: technique.color,
                   marginBottom: '1rem'
@@ -391,11 +392,12 @@ const LovingKindnessMeditation = () => {
                   {technique.title}
                 </h1>
                 <p style={{
-                  fontSize: '1.3rem',
+                  fontSize: 'clamp(1.1rem, 3vw, 1.3rem)',
                   color: '#64748b',
                   maxWidth: '600px',
                   margin: '0 auto',
-                  lineHeight: '1.6'
+                  lineHeight: '1.6',
+                  padding: '0 1rem'
                 }}>
                   {technique.description}
                 </p>
@@ -406,7 +408,7 @@ const LovingKindnessMeditation = () => {
             <div style={{
               background: 'white',
               borderRadius: '25px',
-              padding: '2rem',
+              padding: 'clamp(1rem, 4vw, 2rem)',
               boxShadow: '0 20px 50px rgba(0,0,0,0.1)',
               marginBottom: '3rem'
             }}>
@@ -416,8 +418,8 @@ const LovingKindnessMeditation = () => {
             {/* Grid de Informações */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: '2rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: 'clamp(1rem, 3vw, 2rem)',
               marginBottom: '3rem'
             }}>
               
@@ -425,14 +427,14 @@ const LovingKindnessMeditation = () => {
               <div style={{
                 background: 'white',
                 borderRadius: '20px',
-                padding: '2rem',
+                padding: 'clamp(1.2rem, 4vw, 2rem)',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
                 borderLeft: `4px solid ${technique.color}`
               }}>
                 <h3 style={{
                   color: technique.color,
                   fontWeight: '700',
-                  fontSize: '1.5rem',
+                  fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
                   marginBottom: '1.5rem',
                   display: 'flex',
                   alignItems: 'center',
@@ -440,13 +442,13 @@ const LovingKindnessMeditation = () => {
                 }}>
                   📝 Como Praticar
                 </h3>
-                <ol style={{ margin: 0, paddingLeft: '1.2rem' }}>
+                <ol style={{ margin: 0, paddingLeft: 'clamp(1rem, 2vw, 1.2rem)' }}>
                   {technique.steps.map((step, index) => (
                     <li key={index} style={{
                       color: '#374151',
                       marginBottom: '1rem',
                       lineHeight: '1.6',
-                      fontSize: '1.1rem'
+                      fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)'
                     }}>
                       {step}
                     </li>
@@ -458,14 +460,14 @@ const LovingKindnessMeditation = () => {
               <div style={{
                 background: 'white',
                 borderRadius: '20px',
-                padding: '2rem',
+                padding: 'clamp(1.2rem, 4vw, 2rem)',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
                 borderLeft: `4px solid #10b981`
               }}>
                 <h3 style={{
                   color: '#10b981',
                   fontWeight: '700',
-                  fontSize: '1.5rem',
+                  fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
                   marginBottom: '1.5rem',
                   display: 'flex',
                   alignItems: 'center',
@@ -473,13 +475,13 @@ const LovingKindnessMeditation = () => {
                 }}>
                   ✨ Benefícios
                 </h3>
-                <ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
+                <ul style={{ margin: 0, paddingLeft: 'clamp(1rem, 2vw, 1.2rem)' }}>
                   {technique.benefits.map((benefit, index) => (
                     <li key={index} style={{
                       color: '#374151',
                       marginBottom: '1rem',
                       lineHeight: '1.6',
-                      fontSize: '1.1rem'
+                      fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)'
                     }}>
                       {benefit}
                     </li>
@@ -491,15 +493,15 @@ const LovingKindnessMeditation = () => {
               <div style={{
                 background: 'white',
                 borderRadius: '20px',
-                padding: '2rem',
+                padding: 'clamp(1.2rem, 4vw, 2rem)',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
                 borderLeft: `4px solid #f59e0b`,
-                gridColumn: 'span 2'
+                gridColumn: window.innerWidth > 768 ? 'span 2' : 'span 1'
               }}>
                 <h3 style={{
                   color: '#f59e0b',
                   fontWeight: '700',
-                  fontSize: '1.5rem',
+                  fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
                   marginBottom: '1.5rem',
                   display: 'flex',
                   alignItems: 'center',
@@ -509,15 +511,15 @@ const LovingKindnessMeditation = () => {
                 </h3>
                 <div style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                  gap: '1rem'
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                  gap: 'clamp(0.8rem, 2vw, 1rem)'
                 }}>
                   {technique.tips.map((tip, index) => (
                     <div key={index} style={{
                       display: 'flex',
                       alignItems: 'center',
                       gap: '0.8rem',
-                      padding: '1rem',
+                      padding: 'clamp(0.8rem, 2vw, 1rem)',
                       background: '#f59e0b10',
                       borderRadius: '12px'
                     }}>
@@ -530,7 +532,7 @@ const LovingKindnessMeditation = () => {
                       }} />
                       <span style={{
                         color: '#374151',
-                        fontSize: '1rem',
+                        fontSize: 'clamp(0.9rem, 2.2vw, 1rem)',
                         lineHeight: '1.5'
                       }}>
                         {tip}

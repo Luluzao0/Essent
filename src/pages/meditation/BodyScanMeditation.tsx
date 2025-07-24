@@ -107,8 +107,8 @@ const BodyScanVisualizer3D: React.FC<{ color: string }> = ({ color }) => {
       <div
         onClick={startScan}
         style={{
-          width: '150px',
-          height: '300px',
+          width: 'clamp(120px, 20vw, 150px)',
+          height: 'clamp(240px, 40vw, 300px)',
           margin: '0 auto 2rem',
           position: 'relative',
           cursor: 'pointer',
@@ -117,7 +117,7 @@ const BodyScanVisualizer3D: React.FC<{ color: string }> = ({ color }) => {
         }}
       >
         {/* Body outline */}
-        <svg width="150" height="300" viewBox="0 0 150 300" style={{ overflow: 'visible' }}>
+        <svg width="100%" height="100%" viewBox="0 0 150 300" style={{ overflow: 'visible' }}>
           {/* Head */}
           <ellipse cx="75" cy="30" rx="25" ry="30" 
             fill={scanPosition <= 10 && isScanning ? `${color}60` : `${color}20`}
@@ -187,16 +187,20 @@ const BodyScanVisualizer3D: React.FC<{ color: string }> = ({ color }) => {
         )}
       </div>
 
-      <div style={{ marginBottom: '2rem' }}>
+      <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
         <h3 style={{
           color: color,
           fontWeight: '700',
-          fontSize: '1.8rem',
+          fontSize: 'clamp(1.2rem, 4vw, 1.8rem)',
           marginBottom: '1rem'
         }}>
           {currentBodyPart}
         </h3>
-        <p style={{ color: '#64748b', fontSize: '1.2rem' }}>
+        <p style={{ 
+          color: '#64748b', 
+          fontSize: 'clamp(1rem, 3vw, 1.2rem)',
+          padding: '0 1rem'
+        }}>
           {isScanning ? `Ciclo ${cycle + 1} de 3` : 'Clique na silhueta para começar'}
         </p>
       </div>
@@ -205,13 +209,15 @@ const BodyScanVisualizer3D: React.FC<{ color: string }> = ({ color }) => {
       <div style={{
         display: 'flex',
         justifyContent: 'center',
-        gap: '0.5rem',
-        marginBottom: '2rem'
+        gap: 'clamp(0.3rem, 1vw, 0.5rem)',
+        marginBottom: '2rem',
+        flexWrap: 'wrap',
+        padding: '0 1rem'
       }}>
         {bodyParts.map((_, index) => (
           <div key={index} style={{
-            width: '8px',
-            height: '8px',
+            width: 'clamp(6px, 1.5vw, 8px)',
+            height: 'clamp(6px, 1.5vw, 8px)',
             borderRadius: '50%',
             background: bodyParts.findIndex(part => part.position === scanPosition) >= index ? color : `${color}30`,
             transition: 'all 0.3s ease'
@@ -275,11 +281,11 @@ const BodyScanMeditation = () => {
       background: `linear-gradient(135deg, ${technique.color}05 0%, #faf5ff 100%)` 
     }}>
       <SectionTransition delay={0}>
-        <div style={{ padding: '2rem 1rem' }}>
+        <div style={{ padding: 'clamp(1rem, 4vw, 2rem) clamp(0.5rem, 2vw, 1rem)' }}>
           <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
             
             {/* Header com botão voltar */}
-            <div style={{ marginBottom: '3rem' }}>
+            <div style={{ marginBottom: 'clamp(1.5rem, 4vw, 3rem)' }}>
               <Link
                 to="/meditation"
                 style={{
@@ -288,10 +294,10 @@ const BodyScanMeditation = () => {
                   gap: '0.5rem',
                   color: technique.color,
                   textDecoration: 'none',
-                  fontSize: '1.1rem',
+                  fontSize: 'clamp(1rem, 2.5vw, 1.1rem)',
                   fontWeight: '600',
                   marginBottom: '2rem',
-                  padding: '0.8rem 1.5rem',
+                  padding: 'clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem)',
                   background: `${technique.color}10`,
                   borderRadius: '25px',
                   transition: 'all 0.3s ease'
@@ -305,19 +311,19 @@ const BodyScanMeditation = () => {
                   e.currentTarget.style.transform = 'translateX(0)';
                 }}
               >
-                <ArrowLeftIcon style={{ width: '1.2rem', height: '1.2rem' }} />
+                <ArrowLeftIcon style={{ width: 'clamp(1rem, 2.5vw, 1.2rem)', height: 'clamp(1rem, 2.5vw, 1.2rem)' }} />
                 Voltar às Técnicas
               </Link>
 
               <div style={{ textAlign: 'center' }}>
                 <div style={{
-                  fontSize: '4rem',
+                  fontSize: 'clamp(2.5rem, 8vw, 4rem)',
                   marginBottom: '1rem'
                 }}>
                   {technique.icon}
                 </div>
                 <h1 style={{
-                  fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+                  fontSize: 'clamp(2rem, 6vw, 4rem)',
                   fontWeight: '700',
                   color: technique.color,
                   marginBottom: '1rem'
@@ -325,11 +331,12 @@ const BodyScanMeditation = () => {
                   {technique.title}
                 </h1>
                 <p style={{
-                  fontSize: '1.3rem',
+                  fontSize: 'clamp(1.1rem, 3vw, 1.3rem)',
                   color: '#64748b',
                   maxWidth: '600px',
                   margin: '0 auto',
-                  lineHeight: '1.6'
+                  lineHeight: '1.6',
+                  padding: '0 1rem'
                 }}>
                   {technique.description}
                 </p>
@@ -340,7 +347,7 @@ const BodyScanMeditation = () => {
             <div style={{
               background: 'white',
               borderRadius: '25px',
-              padding: '2rem',
+              padding: 'clamp(1rem, 4vw, 2rem)',
               boxShadow: '0 20px 50px rgba(0,0,0,0.1)',
               marginBottom: '3rem'
             }}>
@@ -350,8 +357,8 @@ const BodyScanMeditation = () => {
             {/* Grid de Informações */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: '2rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: 'clamp(1rem, 3vw, 2rem)',
               marginBottom: '3rem'
             }}>
               
@@ -359,14 +366,14 @@ const BodyScanMeditation = () => {
               <div style={{
                 background: 'white',
                 borderRadius: '20px',
-                padding: '2rem',
+                padding: 'clamp(1.2rem, 4vw, 2rem)',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
                 borderLeft: `4px solid ${technique.color}`
               }}>
                 <h3 style={{
                   color: technique.color,
                   fontWeight: '700',
-                  fontSize: '1.5rem',
+                  fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
                   marginBottom: '1.5rem',
                   display: 'flex',
                   alignItems: 'center',
@@ -374,13 +381,13 @@ const BodyScanMeditation = () => {
                 }}>
                   📝 Como Praticar
                 </h3>
-                <ol style={{ margin: 0, paddingLeft: '1.2rem' }}>
+                <ol style={{ margin: 0, paddingLeft: 'clamp(1rem, 2vw, 1.2rem)' }}>
                   {technique.steps.map((step, index) => (
                     <li key={index} style={{
                       color: '#374151',
                       marginBottom: '1rem',
                       lineHeight: '1.6',
-                      fontSize: '1.1rem'
+                      fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)'
                     }}>
                       {step}
                     </li>
@@ -392,14 +399,14 @@ const BodyScanMeditation = () => {
               <div style={{
                 background: 'white',
                 borderRadius: '20px',
-                padding: '2rem',
+                padding: 'clamp(1.2rem, 4vw, 2rem)',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
                 borderLeft: `4px solid #10b981`
               }}>
                 <h3 style={{
                   color: '#10b981',
                   fontWeight: '700',
-                  fontSize: '1.5rem',
+                  fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
                   marginBottom: '1.5rem',
                   display: 'flex',
                   alignItems: 'center',
@@ -407,13 +414,13 @@ const BodyScanMeditation = () => {
                 }}>
                   ✨ Benefícios
                 </h3>
-                <ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
+                <ul style={{ margin: 0, paddingLeft: 'clamp(1rem, 2vw, 1.2rem)' }}>
                   {technique.benefits.map((benefit, index) => (
                     <li key={index} style={{
                       color: '#374151',
                       marginBottom: '1rem',
                       lineHeight: '1.6',
-                      fontSize: '1.1rem'
+                      fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)'
                     }}>
                       {benefit}
                     </li>
@@ -425,15 +432,15 @@ const BodyScanMeditation = () => {
               <div style={{
                 background: 'white',
                 borderRadius: '20px',
-                padding: '2rem',
+                padding: 'clamp(1.2rem, 4vw, 2rem)',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
                 borderLeft: `4px solid #f59e0b`,
-                gridColumn: 'span 2'
+                gridColumn: window.innerWidth > 768 ? 'span 2' : 'span 1'
               }}>
                 <h3 style={{
                   color: '#f59e0b',
                   fontWeight: '700',
-                  fontSize: '1.5rem',
+                  fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
                   marginBottom: '1.5rem',
                   display: 'flex',
                   alignItems: 'center',
@@ -443,15 +450,15 @@ const BodyScanMeditation = () => {
                 </h3>
                 <div style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                  gap: '1rem'
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                  gap: 'clamp(0.8rem, 2vw, 1rem)'
                 }}>
                   {technique.tips.map((tip, index) => (
                     <div key={index} style={{
                       display: 'flex',
                       alignItems: 'center',
                       gap: '0.8rem',
-                      padding: '1rem',
+                      padding: 'clamp(0.8rem, 2vw, 1rem)',
                       background: '#f59e0b10',
                       borderRadius: '12px'
                     }}>
@@ -464,7 +471,7 @@ const BodyScanMeditation = () => {
                       }} />
                       <span style={{
                         color: '#374151',
-                        fontSize: '1rem',
+                        fontSize: 'clamp(0.9rem, 2.2vw, 1rem)',
                         lineHeight: '1.5'
                       }}>
                         {tip}

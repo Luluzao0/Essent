@@ -157,8 +157,8 @@ const MindfulnessVisualizer: React.FC<{ color: string }> = ({ color }) => {
       <div
         onClick={startPractice}
         style={{
-          width: '350px',
-          height: '250px',
+          width: 'clamp(280px, 60vw, 350px)',
+          height: 'clamp(200px, 40vw, 250px)',
           margin: '0 auto 2rem',
           position: 'relative',
           cursor: 'pointer',
@@ -173,9 +173,9 @@ const MindfulnessVisualizer: React.FC<{ color: string }> = ({ color }) => {
             key={thought.id}
             style={{
               position: 'absolute',
-              left: `${thought.x}px`,
-              top: `${thought.y}px`,
-              fontSize: '2rem',
+              left: `${(thought.x / 350) * 100}%`,
+              top: `${(thought.y / 250) * 100}%`,
+              fontSize: 'clamp(1.2rem, 4vw, 2rem)',
               opacity: thought.opacity,
               transform: 'translate(-50%, -50%)',
               transition: 'all 2s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -193,8 +193,8 @@ const MindfulnessVisualizer: React.FC<{ color: string }> = ({ color }) => {
             position: 'absolute',
             left: '50%',
             top: '50%',
-            width: '4px',
-            height: '4px',
+            width: 'clamp(3px, 1vw, 4px)',
+            height: 'clamp(3px, 1vw, 4px)',
             background: getStateColor(),
             borderRadius: '50%',
             transform: 'translate(-50%, -50%)',
@@ -223,29 +223,31 @@ const MindfulnessVisualizer: React.FC<{ color: string }> = ({ color }) => {
       <div style={{
         display: 'flex',
         justifyContent: 'center',
-        gap: '1rem',
-        marginBottom: '2rem'
+        gap: 'clamp(0.5rem, 2vw, 1rem)',
+        marginBottom: '2rem',
+        flexWrap: 'wrap',
+        padding: '0 1rem'
       }}>
         {['scattered', 'focusing', 'mindful'].map((state) => (
           <div key={state} style={{
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem',
-            padding: '0.5rem 1rem',
+            padding: 'clamp(0.4rem, 1.5vw, 0.5rem) clamp(0.8rem, 2vw, 1rem)',
             borderRadius: '20px',
             background: mindState === state ? `${getStateColor()}20` : 'rgba(255,255,255,0.1)',
             border: `2px solid ${mindState === state ? getStateColor() : '#e5e7eb'}`,
             transition: 'all 0.3s ease'
           }}>
             <div style={{
-              width: '8px',
-              height: '8px',
+              width: 'clamp(6px, 1.5vw, 8px)',
+              height: 'clamp(6px, 1.5vw, 8px)',
               borderRadius: '50%',
               background: mindState === state ? getStateColor() : '#d1d5db'
             }} />
             <span style={{
               color: mindState === state ? getStateColor() : '#64748b',
-              fontSize: '0.9rem',
+              fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
               fontWeight: '600'
             }}>
               {state === 'scattered' ? 'Disperso' : state === 'focusing' ? 'Focando' : 'Mindful'}
@@ -323,11 +325,11 @@ const MindfulnessMeditation = () => {
       background: `linear-gradient(135deg, ${technique.color}05 0%, #f0fdf4 100%)` 
     }}>
       <SectionTransition delay={0}>
-        <div style={{ padding: '2rem 1rem' }}>
+        <div style={{ padding: 'clamp(1rem, 4vw, 2rem) clamp(0.5rem, 2vw, 1rem)' }}>
           <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
             
             {/* Header com botão voltar */}
-            <div style={{ marginBottom: '3rem' }}>
+            <div style={{ marginBottom: 'clamp(1.5rem, 4vw, 3rem)' }}>
               <Link
                 to="/meditation"
                 style={{
@@ -336,10 +338,10 @@ const MindfulnessMeditation = () => {
                   gap: '0.5rem',
                   color: technique.color,
                   textDecoration: 'none',
-                  fontSize: '1.1rem',
+                  fontSize: 'clamp(1rem, 2.5vw, 1.1rem)',
                   fontWeight: '600',
                   marginBottom: '2rem',
-                  padding: '0.8rem 1.5rem',
+                  padding: 'clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem)',
                   background: `${technique.color}10`,
                   borderRadius: '25px',
                   transition: 'all 0.3s ease'
@@ -353,19 +355,19 @@ const MindfulnessMeditation = () => {
                   e.currentTarget.style.transform = 'translateX(0)';
                 }}
               >
-                <ArrowLeftIcon style={{ width: '1.2rem', height: '1.2rem' }} />
+                <ArrowLeftIcon style={{ width: 'clamp(1rem, 2.5vw, 1.2rem)', height: 'clamp(1rem, 2.5vw, 1.2rem)' }} />
                 Voltar às Técnicas
               </Link>
 
               <div style={{ textAlign: 'center' }}>
                 <div style={{
-                  fontSize: '4rem',
+                  fontSize: 'clamp(2.5rem, 8vw, 4rem)',
                   marginBottom: '1rem'
                 }}>
                   {technique.icon}
                 </div>
                 <h1 style={{
-                  fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+                  fontSize: 'clamp(2rem, 6vw, 4rem)',
                   fontWeight: '700',
                   color: technique.color,
                   marginBottom: '1rem'
@@ -373,11 +375,12 @@ const MindfulnessMeditation = () => {
                   {technique.title}
                 </h1>
                 <p style={{
-                  fontSize: '1.3rem',
+                  fontSize: 'clamp(1.1rem, 3vw, 1.3rem)',
                   color: '#64748b',
                   maxWidth: '600px',
                   margin: '0 auto',
-                  lineHeight: '1.6'
+                  lineHeight: '1.6',
+                  padding: '0 1rem'
                 }}>
                   {technique.description}
                 </p>
@@ -388,7 +391,7 @@ const MindfulnessMeditation = () => {
             <div style={{
               background: 'white',
               borderRadius: '25px',
-              padding: '2rem',
+              padding: 'clamp(1rem, 4vw, 2rem)',
               boxShadow: '0 20px 50px rgba(0,0,0,0.1)',
               marginBottom: '3rem'
             }}>
@@ -398,8 +401,8 @@ const MindfulnessMeditation = () => {
             {/* Grid de Informações */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: '2rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: 'clamp(1rem, 3vw, 2rem)',
               marginBottom: '3rem'
             }}>
               
@@ -407,14 +410,14 @@ const MindfulnessMeditation = () => {
               <div style={{
                 background: 'white',
                 borderRadius: '20px',
-                padding: '2rem',
+                padding: 'clamp(1.2rem, 4vw, 2rem)',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
                 borderLeft: `4px solid ${technique.color}`
               }}>
                 <h3 style={{
                   color: technique.color,
                   fontWeight: '700',
-                  fontSize: '1.5rem',
+                  fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
                   marginBottom: '1.5rem',
                   display: 'flex',
                   alignItems: 'center',
@@ -422,13 +425,13 @@ const MindfulnessMeditation = () => {
                 }}>
                   📝 Como Praticar
                 </h3>
-                <ol style={{ margin: 0, paddingLeft: '1.2rem' }}>
+                <ol style={{ margin: 0, paddingLeft: 'clamp(1rem, 2vw, 1.2rem)' }}>
                   {technique.steps.map((step, index) => (
                     <li key={index} style={{
                       color: '#374151',
                       marginBottom: '1rem',
                       lineHeight: '1.6',
-                      fontSize: '1.1rem'
+                      fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)'
                     }}>
                       {step}
                     </li>
@@ -440,14 +443,14 @@ const MindfulnessMeditation = () => {
               <div style={{
                 background: 'white',
                 borderRadius: '20px',
-                padding: '2rem',
+                padding: 'clamp(1.2rem, 4vw, 2rem)',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
                 borderLeft: `4px solid #10b981`
               }}>
                 <h3 style={{
                   color: '#10b981',
                   fontWeight: '700',
-                  fontSize: '1.5rem',
+                  fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
                   marginBottom: '1.5rem',
                   display: 'flex',
                   alignItems: 'center',
@@ -455,13 +458,13 @@ const MindfulnessMeditation = () => {
                 }}>
                   ✨ Benefícios
                 </h3>
-                <ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
+                <ul style={{ margin: 0, paddingLeft: 'clamp(1rem, 2vw, 1.2rem)' }}>
                   {technique.benefits.map((benefit, index) => (
                     <li key={index} style={{
                       color: '#374151',
                       marginBottom: '1rem',
                       lineHeight: '1.6',
-                      fontSize: '1.1rem'
+                      fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)'
                     }}>
                       {benefit}
                     </li>
@@ -473,15 +476,15 @@ const MindfulnessMeditation = () => {
               <div style={{
                 background: 'white',
                 borderRadius: '20px',
-                padding: '2rem',
+                padding: 'clamp(1.2rem, 4vw, 2rem)',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
                 borderLeft: `4px solid #f59e0b`,
-                gridColumn: 'span 2'
+                gridColumn: window.innerWidth > 768 ? 'span 2' : 'span 1'
               }}>
                 <h3 style={{
                   color: '#f59e0b',
                   fontWeight: '700',
-                  fontSize: '1.5rem',
+                  fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
                   marginBottom: '1.5rem',
                   display: 'flex',
                   alignItems: 'center',
@@ -491,15 +494,15 @@ const MindfulnessMeditation = () => {
                 </h3>
                 <div style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                  gap: '1rem'
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                  gap: 'clamp(0.8rem, 2vw, 1rem)'
                 }}>
                   {technique.tips.map((tip, index) => (
                     <div key={index} style={{
                       display: 'flex',
                       alignItems: 'center',
                       gap: '0.8rem',
-                      padding: '1rem',
+                      padding: 'clamp(0.8rem, 2vw, 1rem)',
                       background: '#f59e0b10',
                       borderRadius: '12px'
                     }}>
@@ -512,7 +515,7 @@ const MindfulnessMeditation = () => {
                       }} />
                       <span style={{
                         color: '#374151',
-                        fontSize: '1rem',
+                        fontSize: 'clamp(0.9rem, 2.2vw, 1rem)',
                         lineHeight: '1.5'
                       }}>
                         {tip}

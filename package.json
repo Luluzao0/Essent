@@ -1,0 +1,62 @@
+{
+  "name": "essent-wellness",
+  "private": false,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Aplicação web para auto-ajuda e bem-estar mental com foco cristão e motivacional",
+  "author": "Luis Gustavo",
+  "license": "MIT",
+  "keywords": [
+    "wellness",
+    "mental-health",
+    "christian",
+    "motivation",
+    "self-help",
+    "meditation",
+    "react",
+    "typescript",
+    "vite"
+  ],
+  "homepage": "https://github.com/luisgustavo-dev/essent-wellness",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luisgustavo-dev/essent-wellness.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luisgustavo-dev/essent-wellness/issues"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "@radix-ui/react-icons": "^1.3.2",
+    "@types/react-router-dom": "^5.3.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.7",
+    "lucide-react": "^0.525.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-intersection-observer": "^9.16.0",
+    "react-player": "^2.16.0",
+    "react-router-dom": "^7.7.0",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.1",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "eslint": "^9.30.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.35.1",
+    "vite": "^7.0.4"
+  }
+}

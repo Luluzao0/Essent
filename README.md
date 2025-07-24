@@ -210,8 +210,8 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 👤 Autor
 
-**Luis Gustavo**
-- GitHub: [@luisgustavo-dev](https://github.com/luisgustavo-dev)
+**Luis Guilherme**
+- GitHub: [@luluzao0](https://github.com/luluzao0)
 
 ## 🙏 Agradecimentos
 

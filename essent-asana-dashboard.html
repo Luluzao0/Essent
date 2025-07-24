@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essent Asana Manager</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #333;
+            margin: 0;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .project-info {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+        .project-info h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        .project-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .project-info a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .btn.btn-success {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+        }
+        .btn.btn-warning {
+            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+        }
+        .btn.btn-info {
+            background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        .status {
+            text-align: center;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        .progress-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50 0%, #45a049 100%);
+            transition: width 0.3s ease;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .task-list {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .task-item {
+            padding: 12px;
+            border-bottom: 1px solid #e1e1e1;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+        }
+        .task-item:last-child {
+            border-bottom: none;
+        }
+        .task-completed {
+            background: #f8f9fa;
+            opacity: 0.7;
+        }
+        .task-name {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .task-due {
+            font-size: 0.8rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧘 Essent Asana Manager</h1>
+            <p>Sistema de Gerenciamento de Tarefas - Projeto Essent</p>
+        </div>
+
+        <div class="project-info">
+            <h3>📋 Board Configurado</h3>
+            <p><strong>Nome:</strong> 🧘 Projeto Essent - Board Kanban</p>
+            <p><strong>Projeto ID:</strong> 1210883144442153</p>
+            <p><strong>Board ID:</strong> 1210883405455170</p>
+            <p><strong>Workspace:</strong> Meu espaço de trabalho (1210883386782130)</p>
+            <p><strong>Link Board:</strong> <a href="https://app.asana.com/1/1210883386782130/project/1210883144442153/board/1210883405455170" target="_blank">Abrir Board no Asana</a></p>
+        </div>
+
+        <div class="form-group">
+            <label for="tokenInput">🔑 Personal Access Token da Asana:</label>
+            <input type="text" id="tokenInput" placeholder="Cole seu token aqui..." />
+        </div>
+
+        <div class="form-group">
+            <button class="btn" onclick="initManager()">🔧 Inicializar Manager</button>
+            <button class="btn btn-success" onclick="setupWorkflow()">🚀 Setup Board</button>
+            <button class="btn btn-info" onclick="getTasks()">📋 Listar Tarefas</button>
+            <button class="btn btn-warning" onclick="getProgress()">📊 Relatório</button>
+            <button class="btn" onclick="openAsana()">🔗 Abrir Board</button>
+            <button class="btn" onclick="clearResults()">🗑️ Limpar</button>
+        </div>
+
+        <div id="status" class="status"></div>
+        <div id="results"></div>
+    </div>
+
+    <div id="progressContainer" style="display: none;">
+        <div class="container">
+            <h3>📊 Progresso do Projeto</h3>
+            <div class="progress-card">
+                <h4>Progresso Geral</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalTasks">0</div>
+                        <div class="stat-label">Total de Tarefas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="completedTasks">0</div>
+                        <div class="stat-label">Concluídas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="pendingTasks">0</div>
+                        <div class="stat-label">Pendentes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="progressPercentage">0%</div>
+                        <div class="stat-label">Progresso</div>
+                    </div>
+                </div>
+                <div class="task-list" id="taskList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let essentManager = null;
+        
+        // Configurações do projeto
+        const ESSENT_PROJECT = {
+            projectId: '1210883144442153',
+            workspaceId: '1210883386782130', 
+            boardId: '1210883405455170',
+            projectUrl: 'https://app.asana.com/1/1210883386782130/project/1210883144442153/board/1210883405455170'
+        };
+
+        function updateStatus(message, type = 'info') {
+            const statusEl = document.getElementById('status');
+            statusEl.textContent = message;
+            statusEl.className = `status ${type}`;
+        }
+
+        function showResult(message, type = 'info') {
+            const resultsEl = document.getElementById('results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `result ${type}`;
+            resultDiv.textContent = message;
+            resultsEl.appendChild(resultDiv);
+            resultsEl.scrollTop = resultsEl.scrollHeight;
+        }
+
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+            document.getElementById('status').textContent = '';
+            document.getElementById('progressContainer').style.display = 'none';
+        }
+
+        function getToken() {
+            const token = document.getElementById('tokenInput').value.trim();
+            if (!token) {
+                showResult('❌ Por favor, insira seu token da Asana!', 'error');
+                return null;
+            }
+            return token;
+        }
+
+        class EssentAsanaManager {
+            constructor(accessToken) {
+                this.accessToken = accessToken;
+                this.baseURL = 'https://app.asana.com/api/1.0';
+                this.headers = {
+                    'Authorization': `Bearer ${accessToken}`,
+                    'Content-Type': 'application/json'
+                };
+            }
+
+            async createEssentTasks() {
+                const tasks = [
+                    {
+                        name: "🔍 Monitorar ranking 'essent' no Google",
+                        notes: "Implementar tracking automático de posições no Google Search Console para 'essent psicologia'",
+                        due_on: "2025-07-30",
+                        assignee: "me"
+                    },
+                    {
+                        name: "📊 Implementar Schema.org avançado",
+                        notes: "Adicionar marcação estruturada para páginas de meditação e práticas",
+                        due_on: "2025-07-31",
+                        assignee: "me"
+                    },
+                    {
+                        name: "📱 Otimizar performance mobile < 3s",
+                        notes: "Melhorar Core Web Vitals com lazy loading e code splitting",
+                        due_on: "2025-08-02",
+                        assignee: "me"
+                    },
+                    {
+                        name: "🎨 Sistema de progresso do usuário",
+                        notes: "Criar tracking de meditações completadas com badges",
+                        due_on: "2025-08-05",
+                        assignee: "me"
+                    },
+                    {
+                        name: "🌙 Implementar modo escuro",
+                        notes: "Theme switcher com persistência no localStorage",
+                        due_on: "2025-08-07",
+                        assignee: "me"
+                    },
+                    {
+                        name: "📈 Google Analytics 4 eventos customizados",
+                        notes: "Implementar tracking de interactions de meditação",
+                        due_on: "2025-08-03",
+                        assignee: "me"
+                    }
+                ];
+
+                const createdTasks = [];
+
+                for (const taskData of tasks) {
+                    try {
+                        const response = await fetch(`${this.baseURL}/tasks`, {
+                            method: 'POST',
+                            headers: this.headers,
+                            body: JSON.stringify({
+                                data: {
+                                    ...taskData,
+                                    projects: [ESSENT_PROJECT.projectId]
+                                }
+                            })
+                        });
+
+                        if (response.ok) {
+                            const task = await response.json();
+                            createdTasks.push(task.data);
+                        }
+                    } catch (error) {
+                        console.error(`Error creating task: ${taskData.name}`, error);
+                    }
+                }
+
+                return createdTasks;
+            }
+
+            async createProjectSections() {
+                const sections = [
+                    { name: "� A Fazer" },
+                    { name: "� Em Progresso" }, 
+                    { name: "� Review" },
+                    { name: "✅ Concluído" }
+                ];
+
+                const createdSections = [];
+
+                for (const sectionData of sections) {
+                    try {
+                        const response = await fetch(`${this.baseURL}/sections`, {
+                            method: 'POST',
+                            headers: this.headers,
+                            body: JSON.stringify({
+                                data: {
+                                    name: sectionData.name,
+                                    project: ESSENT_PROJECT.projectId
+                                }
+                            })
+                        });
+
+                        if (response.ok) {
+                            const section = await response.json();
+                            createdSections.push(section.data);
+                        }
+                    } catch (error) {
+                        console.error(`Error creating section: ${sectionData.name}`, error);
+                    }
+                }
+
+                return createdSections;
+            }
+
+            async getProjectTasks() {
+                try {
+                    const response = await fetch(
+                        `${this.baseURL}/tasks?project=${ESSENT_PROJECT.projectId}&opt_fields=name,completed,due_on,assignee.name,notes`,
+                        { headers: this.headers }
+                    );
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        return data.data;
+                    }
+                } catch (error) {
+                    console.error('Error fetching tasks:', error);
+                }
+                return [];
+            }
+
+            async setupEssentWorkflow() {
+                const sections = await this.createProjectSections();
+                const tasks = await this.createEssentTasks();
+                return { sections, tasks };
+            }
+        }
+
+        async function initManager() {
+            const token = getToken();
+            if (!token) return;
+
+            updateStatus('🔧 Inicializando manager...', 'info');
+
+            try {
+                essentManager = new EssentAsanaManager(token);
+                
+                // Testar conexão
+                const response = await fetch('https://app.asana.com/api/1.0/users/me', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const user = await response.json();
+                    updateStatus('✅ Manager inicializado!', 'success');
+                    showResult(`✅ Manager inicializado com sucesso!
+👤 Usuário: ${user.data.name}
+🚀 Pronto para usar!`, 'success');
+                } else {
+                    throw new Error('Token inválido');
+                }
+            } catch (error) {
+                updateStatus('❌ Erro na inicialização', 'error');
+                showResult(`❌ Erro: ${error.message}`, 'error');
+                essentManager = null;
+            }
+        }
+
+        async function setupWorkflow() {
+            if (!essentManager) {
+                showResult('❌ Execute "Inicializar Manager" primeiro!', 'error');
+                return;
+            }
+
+            updateStatus('🚀 Configurando workflow completo...', 'info');
+
+            try {
+                const result = await essentManager.setupEssentWorkflow();
+                
+                updateStatus('✅ Workflow configurado!', 'success');
+                showResult(`🎉 Board configurado com sucesso!
+
+📊 Resultados:
+- Colunas criadas: ${result.sections.length}
+- Tarefas criadas: ${result.tasks.length}
+
+🔗 Acesse o Board: ${ESSENT_PROJECT.projectUrl}
+
+🎯 Próximos passos:
+1. Acesse o board na Asana
+2. Mova as tarefas entre as colunas
+3. Use drag & drop para organizar
+4. Use "Relatório" para acompanhar progresso`, 'success');
+
+            } catch (error) {
+                updateStatus('❌ Erro no setup', 'error');
+                showResult(`❌ Erro: ${error.message}`, 'error');
+            }
+        }
+
+        async function getTasks() {
+            if (!essentManager) {
+                showResult('❌ Execute "Inicializar Manager" primeiro!', 'error');
+                return;
+            }
+
+            updateStatus('📋 Buscando tarefas...', 'info');
+
+            try {
+                const tasks = await essentManager.getProjectTasks();
+                
+                updateStatus(`📋 ${tasks.length} tarefas encontradas`, 'success');
+                
+                let result = `📋 TAREFAS DO BOARD KANBAN\n\n`;
+                
+                tasks.forEach((task, index) => {
+                    const status = task.completed ? '✅' : '📝';
+                    const due = task.due_on ? ` (${task.due_on})` : '';
+                    result += `${status} ${task.name}${due}\n`;
+                });
+                
+                result += `\n🔗 Gerenciar no Board: ${ESSENT_PROJECT.projectUrl}`;
+                
+                showResult(result, 'success');
+
+            } catch (error) {
+                updateStatus('❌ Erro ao buscar tarefas', 'error');
+                showResult(`❌ Erro: ${error.message}`, 'error');
+            }
+        }
+
+        async function getProgress() {
+            if (!essentManager) {
+                showResult('❌ Execute "Inicializar Manager" primeiro!', 'error');
+                return;
+            }
+
+            updateStatus('📊 Gerando relatório...', 'info');
+
+            try {
+                const tasks = await essentManager.getProjectTasks();
+                const completed = tasks.filter(t => t.completed).length;
+                const total = tasks.length;
+                const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+                // Atualizar UI
+                document.getElementById('totalTasks').textContent = total;
+                document.getElementById('completedTasks').textContent = completed;
+                document.getElementById('pendingTasks').textContent = total - completed;
+                document.getElementById('progressPercentage').textContent = `${percentage}%`;
+                document.getElementById('progressFill').style.width = `${percentage}%`;
+
+                // Lista de tarefas
+                const taskList = document.getElementById('taskList');
+                taskList.innerHTML = '';
+                
+                tasks.forEach(task => {
+                    const div = document.createElement('div');
+                    div.className = `task-item ${task.completed ? 'task-completed' : ''}`;
+                    div.innerHTML = `
+                        <div>
+                            <div class="task-name">${task.completed ? '✅' : '📝'} ${task.name}</div>
+                            ${task.due_on ? `<div class="task-due">Prazo: ${task.due_on}</div>` : ''}
+                        </div>
+                    `;
+                    taskList.appendChild(div);
+                });
+
+                document.getElementById('progressContainer').style.display = 'block';
+                updateStatus('📊 Relatório gerado!', 'success');
+
+                showResult(`📊 RELATÓRIO DE PROGRESSO
+
+🎯 Estatísticas:
+- Total de tarefas: ${total}
+- Concluídas: ${completed}
+- Em andamento: ${total - completed}
+- Progresso: ${percentage}%
+
+🔗 Acessar board: ${ESSENT_PROJECT.projectUrl}`, 'success');
+
+            } catch (error) {
+                updateStatus('❌ Erro ao gerar relatório', 'error');
+                showResult(`❌ Erro: ${error.message}`, 'error');
+            }
+        }
+
+        function openAsana() {
+            window.open(ESSENT_PROJECT.projectUrl, '_blank');
+        }
+
+        // Auto-focus no input quando carrega
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('tokenInput').focus();
+        });
+    </script>
+</body>
+</html>

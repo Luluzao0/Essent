@@ -49,6 +49,44 @@ Uma aplicação web moderna para auto-ajuda e bem-estar mental com foco cristão
    yarn dev
    ```
 
+## 📋 Gerenciamento de Tarefas
+
+### 🔗 Integração com Asana
+
+Este projeto está integrado com Asana para gerenciamento de tarefas e acompanhamento de progresso.
+
+#### Configuração da Asana:
+
+1. **Obter Token de Acesso:**
+   - Acesse: https://app.asana.com/0/my-apps
+   - Crie um Personal Access Token
+   - Copie o token gerado
+
+2. **Configurar Integração:**
+   ```bash
+   # Edite o arquivo asana-integration.js
+   # Substitua 'SEU_TOKEN_AQUI' pelo seu token real
+   ```
+
+3. **Setup Inicial:**
+   ```javascript
+   // Execute no browser console ou Node.js
+   setupAsana(); // Cria projeto e tarefas iniciais
+   ```
+
+#### Arquivos de Gestão:
+- `TASK_MANAGEMENT.md` - Dashboard completo de tarefas
+- `ASANA_INTEGRATION_GUIDE.md` - Guia detalhado de configuração
+- `asana-integration.js` - Script de automação
+
+### 📊 Sistema Local de Tarefas
+
+Enquanto configura a Asana, use o sistema local:
+- **Dashboard:** `TASK_MANAGEMENT.md`
+- **Sprints:** Organizados por prioridade (Alta/Média/Baixa)
+- **Tracking:** Progress manual com checkboxes
+- **Retrospectivas:** Análise semanal de velocity
+
 4. **Acesse no navegador**
    ```
    http://localhost:5173

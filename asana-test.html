@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Asana Integration</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #333;
+            margin: 0;
+            font-size: 2rem;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        .instructions {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .status {
+            text-align: center;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔗 Teste Asana Integration</h1>
+            <p>Configure e teste sua conexão com a Asana API</p>
+        </div>
+
+        <div class="instructions">
+            <strong>📋 Instruções:</strong><br>
+            1. Obtenha seu token em: <a href="https://app.asana.com/0/my-apps" target="_blank">app.asana.com/0/my-apps</a><br>
+            2. Cole o token no campo abaixo<br>
+            3. Clique em "Testar Conexão" primeiro<br>
+            4. Se funcionar, clique em "Setup Projeto Essent"
+        </div>
+
+        <div class="form-group">
+            <label for="tokenInput">🔑 Personal Access Token da Asana:</label>
+            <input type="text" id="tokenInput" placeholder="Cole seu token aqui..." />
+        </div>
+
+        <div class="form-group">
+            <button class="btn" onclick="testConnection()">🔍 Testar Conexão</button>
+            <button class="btn" onclick="getWorkspaces()">📋 Listar Workspaces</button>
+            <button class="btn" onclick="getTeams()">👥 Listar Teams</button>
+            <button class="btn" onclick="setupProject()">🚀 Setup Projeto Essent</button>
+            <button class="btn" onclick="clearResults()">🗑️ Limpar</button>
+        </div>
+
+        <div id="status" class="status"></div>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        let currentToken = '';
+        
+        function updateStatus(message, type = 'info') {
+            const statusEl = document.getElementById('status');
+            statusEl.textContent = message;
+            statusEl.className = `status ${type}`;
+        }
+
+        function showResult(message, type = 'info') {
+            const resultsEl = document.getElementById('results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `result ${type}`;
+            resultDiv.textContent = message;
+            resultsEl.appendChild(resultDiv);
+            resultsEl.scrollTop = resultsEl.scrollHeight;
+        }
+
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+            document.getElementById('status').textContent = '';
+        }
+
+        function getToken() {
+            const token = document.getElementById('tokenInput').value.trim();
+            if (!token) {
+                showResult('❌ Por favor, insira seu token da Asana!', 'error');
+                return null;
+            }
+            currentToken = token;
+            return token;
+        }
+
+        async function testConnection() {
+            const token = getToken();
+            if (!token) return;
+
+            updateStatus('🔄 Testando conexão...', 'info');
+            
+            try {
+                const response = await fetch('https://app.asana.com/api/1.0/users/me', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    updateStatus('✅ Conexão estabelecida!', 'success');
+                    showResult(`✅ Conectado com sucesso!
+👤 Usuário: ${data.data.name}
+📧 Email: ${data.data.email}
+🆔 ID: ${data.data.gid}`, 'success');
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+            } catch (error) {
+                updateStatus('❌ Erro na conexão', 'error');
+                showResult(`❌ Erro na conexão: ${error.message}
+
+💡 Dicas:
+- Verifique se o token está correto
+- Confirme se tem permissões no workspace
+- Tente gerar um novo token`, 'error');
+            }
+        }
+
+        async function getWorkspaces() {
+            const token = getToken();
+            if (!token) return;
+
+            updateStatus('📋 Buscando workspaces...', 'info');
+
+            try {
+                const response = await fetch('https://app.asana.com/api/1.0/workspaces', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    updateStatus(`📋 ${data.data.length} workspaces encontrados`, 'success');
+                    
+                    let result = '📋 Workspaces disponíveis:\n\n';
+                    data.data.forEach((workspace, index) => {
+                        result += `${index + 1}. ${workspace.name}\n   ID: ${workspace.gid}\n\n`;
+                    });
+                    
+                    showResult(result, 'success');
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+            } catch (error) {
+                updateStatus('❌ Erro ao buscar workspaces', 'error');
+                showResult(`❌ Erro: ${error.message}`, 'error');
+            }
+        }
+
+        async function getTeams() {
+            const token = getToken();
+            if (!token) return;
+
+            updateStatus('👥 Buscando teams...', 'info');
+
+            try {
+                // Primeiro buscar workspaces
+                const workspacesResponse = await fetch('https://app.asana.com/api/1.0/workspaces', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!workspacesResponse.ok) {
+                    throw new Error('Erro ao buscar workspaces');
+                }
+
+                const workspacesData = await workspacesResponse.json();
+                const workspace = workspacesData.data[0];
+
+                // Buscar teams no workspace
+                const response = await fetch(`https://app.asana.com/api/1.0/teams?workspace=${workspace.gid}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    updateStatus(`👥 ${data.data.length} teams encontrados`, 'success');
+                    
+                    let result = `👥 Teams no workspace "${workspace.name}":\n\n`;
+                    
+                    if (data.data.length === 0) {
+                        result += '⚠️  Nenhum team encontrado.\n';
+                        result += '💡 Isso é normal em workspaces pessoais.\n';
+                        result += '📝 O projeto será criado diretamente no workspace.';
+                    } else {
+                        data.data.forEach((team, index) => {
+                            result += `${index + 1}. ${team.name}\n   ID: ${team.gid}\n\n`;
+                        });
+                    }
+                    
+                    showResult(result, 'success');
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+            } catch (error) {
+                updateStatus('❌ Erro ao buscar teams', 'error');
+                showResult(`❌ Erro: ${error.message}`, 'error');
+            }
+        }
+
+        async function setupProject() {
+            const token = getToken();
+            if (!token) return;
+
+            updateStatus('🚀 Configurando projeto Essent...', 'info');
+
+            try {
+                // 1. Buscar workspaces primeiro
+                const workspacesResponse = await fetch('https://app.asana.com/api/1.0/workspaces', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!workspacesResponse.ok) {
+                    throw new Error('Erro ao buscar workspaces');
+                }
+
+                const workspacesData = await workspacesResponse.json();
+                const workspace = workspacesData.data[0]; // Usar primeiro workspace
+
+                showResult(`🎯 Usando workspace: ${workspace.name}`, 'info');
+
+                // 2. Buscar teams no workspace
+                const teamsResponse = await fetch(`https://app.asana.com/api/1.0/teams?workspace=${workspace.gid}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!teamsResponse.ok) {
+                    throw new Error('Erro ao buscar teams');
+                }
+
+                const teamsData = await teamsResponse.json();
+                
+                if (teamsData.data.length === 0) {
+                    // Se não há teams, criar projeto sem team (apenas workspace)
+                    const projectData = {
+                        data: {
+                            name: "🧘 Projeto Essent - Saúde Mental",
+                            notes: "Aplicação web para autoajuda e bem-estar mental com React + TypeScript + Vite",
+                            workspace: workspace.gid,
+                            privacy_setting: "private",
+                            color: "light-blue",
+                            layout: "list"
+                        }
+                    };
+
+                    showResult(`📋 Criando projeto no workspace (sem team específico)`, 'info');
+                    
+                    const projectResponse = await fetch('https://app.asana.com/api/1.0/projects', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(projectData)
+                    });
+
+                    if (projectResponse.ok) {
+                        const project = await projectResponse.json();
+                        updateStatus('✅ Projeto criado com sucesso!', 'success');
+                        
+                        showResult(`🎯 Projeto Essent criado!
+📌 Nome: ${project.data.name}
+🆔 ID: ${project.data.gid}
+🔗 Link: https://app.asana.com/0/${project.data.gid}
+
+🎉 Agora você pode começar a usar a Asana para gerenciar as tarefas do projeto Essent!`, 'success');
+                    } else {
+                        const errorData = await projectResponse.json();
+                        throw new Error(`Erro ao criar projeto: ${errorData.errors?.[0]?.message || projectResponse.statusText}`);
+                    }
+                } else {
+                    // Usar primeiro team disponível
+                    const team = teamsData.data[0];
+                    showResult(`👥 Usando team: ${team.name}`, 'info');
+
+                    const projectData = {
+                        data: {
+                            name: "🧘 Projeto Essent - Saúde Mental",
+                            notes: "Aplicação web para autoajuda e bem-estar mental com React + TypeScript + Vite",
+                            team: team.gid,
+                            privacy_setting: "private",
+                            color: "light-blue",
+                            layout: "list"
+                        }
+                    };
+
+                    const projectResponse = await fetch('https://app.asana.com/api/1.0/projects', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(projectData)
+                    });
+
+                    if (projectResponse.ok) {
+                        const project = await projectResponse.json();
+                        updateStatus('✅ Projeto criado com sucesso!', 'success');
+                        
+                        showResult(`🎯 Projeto Essent criado!
+📌 Nome: ${project.data.name}
+🆔 ID: ${project.data.gid}
+🔗 Link: https://app.asana.com/0/${project.data.gid}
+
+🎉 Agora você pode começar a usar a Asana para gerenciar as tarefas do projeto Essent!`, 'success');
+                    } else {
+                        const errorData = await projectResponse.json();
+                        throw new Error(`Erro ao criar projeto: ${errorData.errors?.[0]?.message || projectResponse.statusText}`);
+                    }
+                }
+
+            } catch (error) {
+                updateStatus('❌ Erro no setup', 'error');
+                showResult(`❌ Erro no setup: ${error.message}`, 'error');
+            }
+        }
+
+        // Auto-focus no input quando carrega
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('tokenInput').focus();
+        });
+    </script>
+</body>
+</html>

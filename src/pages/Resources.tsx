@@ -141,7 +141,7 @@ const Resources = () => {
         title="Recursos Gratuitos de Saúde Mental e Bem-Estar | Essent"
         description="Acesse testes de ansiedade, guias de meditação, worksheets de autocuidado e pesquisas científicas sobre saúde mental. Recursos validados por psicólogos."
         keywords="recursos saúde mental, teste ansiedade online, guias meditação grátis, worksheets autocuidado, pesquisas científicas psicologia, material psicológico gratuito"
-        url="https://essent-wellness.vercel.app/resources"
+        url="https://essentpsi.vercel.app/resources"
       />
 
       <SectionTransition delay={0}>

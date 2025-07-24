@@ -6,7 +6,7 @@
 
   <!-- Página Principal -->
   <url>
-    <loc>https://essent-wellness.vercel.app/</loc>
+    <loc>https://essentpsi.vercel.app/</loc>
     <lastmod>2025-01-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,7 +14,7 @@
 
   <!-- Seção de Meditação -->
   <url>
-    <loc>https://essent-wellness.vercel.app/meditation</loc>
+    <loc>https://essentpsi.vercel.app/meditation</loc>
     <lastmod>2025-01-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -22,7 +22,7 @@
 
   <!-- Práticas de Bem-Estar -->
   <url>
-    <loc>https://essent-wellness.vercel.app/practices</loc>
+    <loc>https://essentpsi.vercel.app/practices</loc>
     <lastmod>2025-01-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -30,7 +30,7 @@
 
   <!-- Recursos e Materiais -->
   <url>
-    <loc>https://essent-wellness.vercel.app/resources</loc>
+    <loc>https://essentpsi.vercel.app/resources</loc>
     <lastmod>2025-01-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -38,7 +38,7 @@
 
   <!-- Vídeos de Bem-Estar -->
   <url>
-    <loc>https://essent-wellness.vercel.app/videos</loc>
+    <loc>https://essentpsi.vercel.app/videos</loc>
     <lastmod>2025-01-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -46,21 +46,21 @@
 
   <!-- Técnicas de Meditação Específicas -->
   <url>
-    <loc>https://essent-wellness.vercel.app/meditation/body-scan</loc>
+    <loc>https://essentpsi.vercel.app/meditation/body-scan</loc>
     <lastmod>2025-01-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://essent-wellness.vercel.app/meditation/mindfulness</loc>
+    <loc>https://essentpsi.vercel.app/meditation/mindfulness</loc>
     <lastmod>2025-01-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://essent-wellness.vercel.app/meditation/loving-kindness</loc>
+    <loc>https://essentpsi.vercel.app/meditation/loving-kindness</loc>
     <lastmod>2025-01-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

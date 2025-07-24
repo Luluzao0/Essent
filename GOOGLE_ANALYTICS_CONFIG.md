@@ -183,4 +183,4 @@ gtag('event', 'resource_download', {
 });
 ```
 
-**Status**: 🟢 Google Analytics G-TPCY0QD3W0 ativo e coletando dados!
+**Status**: 🟢 Google Analytics G-TPCY0QD3W0 ativo em https://essentpsi.vercel.app/ e coletando dados!

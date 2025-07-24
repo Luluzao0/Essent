@@ -48,7 +48,7 @@ const Meditation = () => {
         title="Meditação Guiada Online - Técnicas para Ansiedade e Depressão | Essent"
         description="Descubra meditações guiadas científicas: respiração consciente, body scan, mindfulness e loving kindness. Reduza ansiedade, depressão e estresse com práticas validadas."
         keywords="meditação guiada, respiração consciente, body scan, mindfulness, loving kindness, ansiedade, depressão, estresse, relaxamento, meditação online"
-        url="https://essentpsi.vercel.app/meditation"
+        url="http://essentpsi.vercel.app/meditation"
       />
       <SectionTransition delay={0}>
         <div style={{ padding: 'clamp(1rem, 4vw, 2rem) clamp(1rem, 4vw, 1rem)' }}>

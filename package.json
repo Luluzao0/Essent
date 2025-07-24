@@ -1,23 +1,25 @@
 {
-  "name": "essent-wellness",
+  "name": "essent",
   "private": false,
   "version": "1.0.0",
   "type": "module",
-  "description": "Aplicação web para auto-ajuda e bem-estar mental com foco cristão e motivacional",
-  "author": "Luis Gustavo",
+  "description": "Essent - Plataforma completa de saúde mental com técnicas de meditação, mindfulness e bem-estar emocional",
+  "author": "Essent",
   "license": "MIT",
   "keywords": [
+    "essent",
+    "essent-psicologia",
+    "essent-saude-mental",
     "wellness",
     "mental-health",
-    "christian",
-    "motivation",
-    "self-help",
     "meditation",
+    "mindfulness",
+    "self-help",
     "react",
     "typescript",
     "vite"
   ],
-  "homepage": "https://github.com/luisgustavo-dev/essent-wellness",
+  "homepage": "http://essentpsi.vercel.app",
   "repository": {
     "type": "git",
     "url": "https://github.com/luisgustavo-dev/essent-wellness.git"

@@ -11,10 +11,10 @@ interface SEOProps {
 
 const SEO: React.FC<SEOProps> = ({
   title = "Essent - Saúde Mental, Meditação e Bem-Estar | Psicologia Online",
-  description = "Plataforma completa de saúde mental com técnicas de meditação, mindfulness, relaxamento e autoajuda. Práticas recomendadas por psicólogos para ansiedade, depressão e equilíbrio emocional.",
-  keywords = "saúde mental, meditação, mindfulness, ansiedade, depressão, autoajuda, psicologia, bem-estar, relaxamento, equilíbrio emocional",
-  image = "https://essentpsi.vercel.app/og-image.jpg",
-  url = "https://essentpsi.vercel.app/",
+  description = "Essent: Plataforma completa de saúde mental com técnicas de meditação, mindfulness, relaxamento e autoajuda. Práticas recomendadas por psicólogos para ansiedade, depressão e equilíbrio emocional.",
+  keywords = "essent, essent psicologia, essent saude mental, essent meditação, saúde mental, meditação, mindfulness, ansiedade, depressão, autoajuda, psicologia, bem-estar, relaxamento, equilíbrio emocional",
+  image = "http://essentpsi.vercel.app/essent-logo-og.jpg",
+  url = "http://essentpsi.vercel.app/",
   type = "website"
 }) => {
   useEffect(() => {

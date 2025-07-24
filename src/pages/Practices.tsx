@@ -20,7 +20,7 @@ const Practices = () => {
         title="Práticas de Bem-Estar e Autoajuda - Técnicas Psicológicas | Essent"
         description="Descubra práticas de bem-estar recomendadas por psicólogos: técnicas cognitivo-comportamentais, exercícios espirituais, autoconhecimento e cuidados pessoais para saúde mental."
         keywords="práticas bem-estar, autoajuda, técnicas psicológicas, terapia cognitivo-comportamental, exercícios espirituais, autoconhecimento, cuidados pessoais, saúde mental"
-        url="https://essent-wellness.vercel.app/practices"
+        url="http://essentpsi.vercel.app/practices"
       />
       {/* Page Header */}
       <SectionTransition delay={0}>

@@ -10,6 +10,7 @@ import BodyScanMeditation from './pages/meditation/BodyScanMeditation';
 import MindfulnessMeditation from './pages/meditation/MindfulnessMeditation';
 import LovingKindnessMeditation from './pages/meditation/LovingKindnessMeditation';
 import Practices from './pages/Practices';
+import Resources from './pages/Resources';
 import { PageTransition } from './components/PageTransition';
 import './styles/index.css';
 
@@ -63,6 +64,11 @@ function App() {
             <Route path="/practices" element={
               <PageTransition>
                 <Practices />
+              </PageTransition>
+            } />
+            <Route path="/resources" element={
+              <PageTransition>
+                <Resources />
               </PageTransition>
             } />
           </Routes>

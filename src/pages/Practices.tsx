@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import MeditationSection from '../components/MeditationSection';
 import { SectionTransition } from '../components/PageTransition';
+import SEO from '../components/SEO';
 import { 
   TokensIcon,
   HeartIcon,
@@ -15,6 +16,12 @@ const Practices = () => {
       background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #f1f5f9 75%, #f0f9ff 100%)',
       minHeight: '100vh'
     }}>
+      <SEO 
+        title="Práticas de Bem-Estar e Autoajuda - Técnicas Psicológicas | Essent"
+        description="Descubra práticas de bem-estar recomendadas por psicólogos: técnicas cognitivo-comportamentais, exercícios espirituais, autoconhecimento e cuidados pessoais para saúde mental."
+        keywords="práticas bem-estar, autoajuda, técnicas psicológicas, terapia cognitivo-comportamental, exercícios espirituais, autoconhecimento, cuidados pessoais, saúde mental"
+        url="https://essent-wellness.vercel.app/practices"
+      />
       {/* Page Header */}
       <SectionTransition delay={0}>
         <section style={{ 

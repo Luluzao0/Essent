@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { SectionTransition } from '../components/PageTransition';
+import SEO from '../components/SEO';
 
 const Meditation = () => {
   const techniques = [
@@ -43,6 +44,12 @@ const Meditation = () => {
       minHeight: '100vh', 
       background: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)' 
     }}>
+      <SEO 
+        title="Meditação Guiada Online - Técnicas para Ansiedade e Depressão | Essent"
+        description="Descubra meditações guiadas científicas: respiração consciente, body scan, mindfulness e loving kindness. Reduza ansiedade, depressão e estresse com práticas validadas."
+        keywords="meditação guiada, respiração consciente, body scan, mindfulness, loving kindness, ansiedade, depressão, estresse, relaxamento, meditação online"
+        url="https://essent-wellness.vercel.app/meditation"
+      />
       <SectionTransition delay={0}>
         <div style={{ padding: 'clamp(1rem, 4vw, 2rem) clamp(1rem, 4vw, 1rem)' }}>
           <div style={{ maxWidth: '1400px', margin: '0 auto' }}>

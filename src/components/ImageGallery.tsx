@@ -94,9 +94,10 @@ const ImageGallery = () => {
           style={{
             display: 'flex',
             flexWrap: 'wrap',
-            gap: '0.75rem',
+            gap: 'clamp(0.5rem, 2vw, 0.75rem)',
             justifyContent: 'center',
-            marginBottom: '3rem'
+            marginBottom: 'clamp(2rem, 5vw, 3rem)',
+            padding: '0 clamp(0.5rem, 2vw, 1rem)'
           }}
         >
           {categories.map((category) => (
@@ -111,15 +112,15 @@ const ImageGallery = () => {
                   : 'rgba(255, 255, 255, 0.8)',
                 color: selectedCategory === category.value ? 'white' : 'var(--text-primary)',
                 border: selectedCategory === category.value ? 'none' : '1px solid var(--border-light)',
-                padding: '0.5rem 1rem',
+                padding: 'clamp(0.4rem, 1.5vw, 0.5rem) clamp(0.8rem, 3vw, 1rem)',
                 borderRadius: '50px',
-                fontSize: '0.9rem',
+                fontSize: 'clamp(0.8rem, 2.2vw, 0.9rem)',
                 fontWeight: '500',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.5rem'
+                gap: 'clamp(0.3rem, 1vw, 0.5rem)'
               }}
             >
               <span>{category.emoji}</span>
@@ -135,8 +136,9 @@ const ImageGallery = () => {
           animate={inView ? "visible" : "hidden"}
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '1.5rem'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(200px, 45vw, 250px), 1fr))',
+            gap: 'clamp(1rem, 3vw, 1.5rem)',
+            padding: '0 clamp(0.5rem, 2vw, 1rem)'
           }}
         >
           {displayedImages.map((image) => (
@@ -159,7 +161,7 @@ const ImageGallery = () => {
                   alt={image.alt}
                   style={{
                     width: '100%',
-                    height: '200px',
+                    height: 'clamp(150px, 30vw, 200px)',
                     objectFit: 'cover',
                     transition: 'transform 0.3s ease'
                   }}
@@ -181,11 +183,11 @@ const ImageGallery = () => {
                   background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 70%)',
                   display: 'flex',
                   alignItems: 'flex-end',
-                  padding: '1rem'
+                  padding: 'clamp(0.8rem, 2vw, 1rem)'
                 }}>
                   <div style={{ color: 'white' }}>
                     <p style={{ 
-                      fontSize: '0.9rem', 
+                      fontSize: 'clamp(0.8rem, 2.2vw, 0.9rem)', 
                       fontWeight: '500',
                       margin: 0
                     }}>
@@ -197,13 +199,13 @@ const ImageGallery = () => {
                 {/* Category Badge */}
                 <div style={{
                   position: 'absolute',
-                  top: '0.75rem',
-                  right: '0.75rem',
+                  top: 'clamp(0.5rem, 2vw, 0.75rem)',
+                  right: 'clamp(0.5rem, 2vw, 0.75rem)',
                   background: 'rgba(255, 255, 255, 0.9)',
                   color: 'var(--secondary-700)',
-                  padding: '0.25rem 0.5rem',
+                  padding: 'clamp(0.2rem, 1vw, 0.25rem) clamp(0.4rem, 1.5vw, 0.5rem)',
                   borderRadius: '15px',
-                  fontSize: '0.7rem',
+                  fontSize: 'clamp(0.6rem, 1.8vw, 0.7rem)',
                   fontWeight: '600',
                   textTransform: 'capitalize'
                 }}>
@@ -211,7 +213,7 @@ const ImageGallery = () => {
                 </div>
               </div>
               
-              <div style={{ padding: '1rem' }}>
+              <div style={{ padding: 'clamp(0.8rem, 2.5vw, 1rem)' }}>
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -224,7 +226,7 @@ const ImageGallery = () => {
                   }}>
                     <Heart size={16} color="var(--accent-500)" />
                     <span style={{
-                      fontSize: '0.8rem',
+                      fontSize: 'clamp(0.7rem, 2vw, 0.8rem)',
                       color: 'var(--text-muted)'
                     }}>
                       {image.width} x {image.height}
@@ -239,7 +241,7 @@ const ImageGallery = () => {
                       border: 'none',
                       color: 'var(--secondary-600)',
                       cursor: 'pointer',
-                      padding: '0.25rem'
+                      padding: 'clamp(0.2rem, 1vw, 0.25rem)'
                     }}
                     onClick={(e) => {
                       e.stopPropagation();

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SectionTransition } from '../../components/PageTransition';
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
+import { trackMeditationStart, trackMeditationComplete } from '../../utils/analytics';
 
 // Componente visual 3D para técnica de respiração
 const BreathingVisualizer3D: React.FC<{ color: string }> = ({ color }) => {

@@ -1,69 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-  <!-- Página Principal -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
   <url>
     <loc>https://essentpsi.vercel.app/</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2025-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Seção de Meditação -->
   <url>
     <loc>https://essentpsi.vercel.app/meditation</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2025-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Práticas de Bem-Estar -->
   <url>
     <loc>https://essentpsi.vercel.app/practices</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2025-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Recursos e Materiais -->
   <url>
     <loc>https://essentpsi.vercel.app/resources</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2025-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Vídeos de Bem-Estar -->
   <url>
-    <loc>https://essentpsi.vercel.app/videos</loc>
-    <lastmod>2025-01-24</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://essentpsi.vercel.app/meditation/breathing</loc>
+    <lastmod>2025-07-24</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Técnicas de Meditação Específicas -->
   <url>
     <loc>https://essentpsi.vercel.app/meditation/body-scan</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2025-07-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://essentpsi.vercel.app/meditation/mindfulness</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2025-07-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://essentpsi.vercel.app/meditation/loving-kindness</loc>
-    <lastmod>2025-01-24</lastmod>
+    <lastmod>2025-07-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://essentpsi.vercel.app/quotes</loc>
+    <lastmod>2025-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://essentpsi.vercel.app/videos</loc>
+    <lastmod>2025-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>

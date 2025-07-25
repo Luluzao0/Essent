@@ -59,7 +59,7 @@ class AsanaIntegration {
       data: {
         name: "🧘 Projeto Essent - Saúde Mental",
         notes: "Aplicação web para autoajuda e bem-estar mental com React + TypeScript",
-        team: workspaceId,
+        workspace: workspaceId,  // Corrigido: usar 'workspace' em vez de 'team'
         privacy_setting: "private",
         color: "light-blue",
         layout: "list"
@@ -197,8 +197,8 @@ class AsanaIntegration {
 
 // Função para usar após obter o token
 async function setupAsana() {
-  // SUBSTITUA 'SEU_TOKEN_AQUI' pelo token real da Asana
-  const accessToken = 'SEU_TOKEN_AQUI';
+  // SUBSTITUA pelo seu token real da Asana
+  const accessToken = '2/1210884780389391/1210884934140946:b3007747f098ce22cec46fa22a4f2441';
   
   if (accessToken === 'SEU_TOKEN_AQUI') {
     console.log('⚠️  Configure seu token de acesso da Asana primeiro!');
@@ -212,7 +212,7 @@ async function setupAsana() {
 
 // Para testar apenas a conexão
 async function testAsanaConnection() {
-  const accessToken = 'SEU_TOKEN_AQUI';
+  const accessToken = '2/1210884780389391/1210884934140946:b3007747f098ce22cec46fa22a4f2441';
   
   if (accessToken === 'SEU_TOKEN_AQUI') {
     console.log('⚠️  Configure seu token de acesso da Asana primeiro!');

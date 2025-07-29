@@ -9,32 +9,32 @@ const QuickActions: React.FC = () => {
       icon: Play,
       title: 'Meditação Rápida',
       description: 'Sessão de 5 minutos',
-      color: '#667eea',
-      gradient: 'linear-gradient(135deg, #667eea, #764ba2)',
+      color: '#1e3a8a',
+      gradient: 'linear-gradient(135deg, #1e3a8a, #374151)',
       action: () => console.log('Iniciar meditação rápida')
     },
     {
       icon: Heart,
       title: 'Respiração Consciente',
       description: 'Exercício de 3 minutos',
-      color: '#f093fb',
-      gradient: 'linear-gradient(135deg, #f093fb, #f5576c)',
+      color: '#374151',
+      gradient: 'linear-gradient(135deg, #374151, #475569)',
       action: () => console.log('Iniciar respiração consciente')
     },
     {
       icon: Brain,
       title: 'Foco Mental',
       description: 'Concentração guiada',
-      color: '#4facfe',
-      gradient: 'linear-gradient(135deg, #4facfe, #00f2fe)',
+      color: '#0c4a6e',
+      gradient: 'linear-gradient(135deg, #0c4a6e, #0284c7)',
       action: () => console.log('Iniciar foco mental')
     },
     {
       icon: Moon,
       title: 'Relaxamento',
       description: 'Para dormir melhor',
-      color: '#a8edea',
-      gradient: 'linear-gradient(135deg, #a8edea, #fed6e3)',
+      color: '#1f2937',
+      gradient: 'linear-gradient(135deg, #1f2937, #374151)',
       action: () => console.log('Iniciar relaxamento')
     }
   ];

@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { User, Settings, TrendingUp, Bell } from 'lucide-react';
+import { User, Settings, TrendingUp, Bell, Database } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import ProfileView from '../components/dashboard/ProfileView';
 import AccountSettings from '../components/dashboard/AccountSettings';
-import ProgressStats from '../components/dashboard/ProgressStats';
+import SimpleProgressStats from '../components/dashboard/SimpleProgressStats';
 import QuickActions from '../components/dashboard/QuickActions';
 import RecentActivity from '../components/dashboard/RecentActivity';
+import FirestoreAdmin from '../components/admin/FirestoreAdmin';
+import AuthDebug from '../components/debug/AuthDebug';
 import styles from './Dashboard.module.css';
 
-type TabType = 'overview' | 'profile' | 'settings';
+type TabType = 'overview' | 'profile' | 'settings' | 'admin';
 
 const Dashboard: React.FC = () => {
   const { currentUser } = useAuth();
@@ -19,6 +21,7 @@ const Dashboard: React.FC = () => {
     { id: 'overview', label: 'Visão Geral', icon: TrendingUp },
     { id: 'profile', label: 'Perfil', icon: User },
     { id: 'settings', label: 'Configurações', icon: Settings },
+    { id: 'admin', label: 'Admin DB', icon: Database },
   ];
 
   const renderTabContent = () => {
@@ -27,7 +30,7 @@ const Dashboard: React.FC = () => {
         return (
           <div className={styles.overviewContent}>
             <div className={styles.statsGrid}>
-              <ProgressStats />
+              <SimpleProgressStats />
             </div>
             <div className={styles.actionsGrid}>
               <QuickActions />
@@ -39,6 +42,8 @@ const Dashboard: React.FC = () => {
         return <ProfileView />;
       case 'settings':
         return <AccountSettings />;
+      case 'admin':
+        return <FirestoreAdmin />;
       default:
         return null;
     }
@@ -68,6 +73,8 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
           
+          {/* Debug temporário */}
+          <AuthDebug />
           <div className={styles.notificationBell}>
             <Bell size={24} />
             <span className={styles.notificationBadge}>3</span>

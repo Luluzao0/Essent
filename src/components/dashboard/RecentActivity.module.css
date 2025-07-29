@@ -1,4 +1,4 @@
-/* Recent Activity Styles */
+/* Recent Activity Styles - Paleta Masculina */
 .recentActivity {
   display: flex;
   flex-direction: column;
@@ -7,12 +7,15 @@
 
 /* Activities Section */
 .activitiesSection {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, 
+    rgba(30, 41, 59, 0.85) 0%,
+    rgba(51, 65, 85, 0.7) 100%
+  );
+  backdrop-filter: blur(20px);
   border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(148, 163, 184, 0.3);
 }
 
 .sectionHeader {
@@ -20,7 +23,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.5rem;
-  color: #2d3748;
+  color: #f1f5f9;
 }
 
 .sectionHeader h3 {
@@ -36,7 +39,7 @@
 .viewAllButton {
   background: none;
   border: none;
-  color: #667eea;
+  color: #94a3b8;
   font-weight: 500;
   cursor: pointer;
   padding: 0.5rem 1rem;
@@ -45,8 +48,8 @@
 }
 
 .viewAllButton:hover {
-  background: rgba(102, 126, 234, 0.1);
-  color: #5a67d8;
+  background: rgba(148, 163, 184, 0.1);
+  color: #cbd5e1;
 }
 
 /* Activities List */
@@ -61,7 +64,7 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1.5rem;
-  background: rgba(102, 126, 234, 0.05);
+  background: rgba(30, 58, 138, 0.05);
   border-radius: 15px;
   border-left: 4px solid transparent;
   transition: all 0.3s ease;
@@ -69,9 +72,9 @@
 }
 
 .activityItem:hover {
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(30, 58, 138, 0.1);
   transform: translateX(5px);
-  border-left-color: #667eea;
+  border-left-color: #1e3a8a;
 }
 
 .activityIndicator {
@@ -94,14 +97,14 @@
   top: -5px;
   right: -5px;
   font-size: 1rem;
-  background: white;
+  background: rgba(30, 41, 59, 0.9);
   border-radius: 50%;
   width: 24px;
   height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .activityContent {
@@ -119,11 +122,11 @@
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
-  color: #2d3748;
+  color: #f1f5f9;
 }
 
 .duration {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #1e3a8a, #374151);
   color: white;
   padding: 0.25rem 0.75rem;
   border-radius: 12px;
@@ -133,25 +136,28 @@
 
 .activityDescription {
   margin: 0 0 0.5rem 0;
-  color: #4a5568;
+  color: #94a3b8;
   font-size: 0.9rem;
   line-height: 1.4;
 }
 
 .activityTime {
-  color: #718096;
+  color: #64748b;
   font-size: 0.875rem;
   font-style: italic;
 }
 
 /* Upcoming Section */
 .upcomingSection {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, 
+    rgba(30, 41, 59, 0.85) 0%,
+    rgba(51, 65, 85, 0.7) 100%
+  );
+  backdrop-filter: blur(20px);
   border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(148, 163, 184, 0.3);
 }
 
 .upcomingList {
@@ -165,13 +171,13 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1.25rem;
-  background: rgba(102, 126, 234, 0.05);
+  background: rgba(30, 58, 138, 0.05);
   border-radius: 12px;
   transition: all 0.3s ease;
 }
 
 .upcomingItem:hover {
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(30, 58, 138, 0.1);
   transform: translateX(5px);
 }
 
@@ -197,13 +203,13 @@
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
-  color: #2d3748;
+  color: #f1f5f9;
   flex: 1;
 }
 
 .upcomingTime {
-  background: rgba(102, 126, 234, 0.1);
-  color: #667eea;
+  background: rgba(30, 58, 138, 0.2);
+  color: #94a3b8;
   padding: 0.25rem 0.75rem;
   border-radius: 10px;
   font-size: 0.75rem;
@@ -227,12 +233,12 @@
 }
 
 .statCard {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
   border-radius: 15px;
   padding: 1.5rem;
-  box-shadow: 0 4px 20px rgba(31, 38, 135, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 20px rgba(79, 172, 254, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -242,7 +248,7 @@
 
 .statCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(31, 38, 135, 0.3);
+  box-shadow: 0 8px 30px rgba(79, 172, 254, 0.3);
 }
 
 .statIcon {

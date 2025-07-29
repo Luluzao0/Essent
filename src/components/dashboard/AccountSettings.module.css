@@ -12,18 +12,31 @@
 
 /* Setting Section */
 .settingSection {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 12px 40px rgba(79, 172, 254, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.settingSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #4facfe, #00c9ff);
+  border-radius: 24px 24px 0 0;
 }
 
 .settingSection:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 50px rgba(79, 172, 254, 0.3);
 }
 
 .dangerZone {
@@ -35,15 +48,18 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(79, 172, 254, 0.2);
 }
 
 .sectionIcon {
-  width: 24px;
-  height: 24px;
-  color: #667eea;
+  width: 28px;
+  height: 28px;
+  color: #4facfe;
+  padding: 8px;
+  background: rgba(79, 172, 254, 0.1);
+  border-radius: 12px;
 }
 
 .dangerZone .sectionIcon {
@@ -68,16 +84,36 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem;
-  background: rgba(102, 126, 234, 0.05);
-  border-radius: 12px;
-  border: 1px solid rgba(102, 126, 234, 0.1);
-  transition: all 0.3s ease;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(79, 172, 254, 0.08), rgba(0, 201, 255, 0.05));
+  border-radius: 16px;
+  border: 1px solid rgba(79, 172, 254, 0.15);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.settingItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(135deg, #4facfe, #00c9ff);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .settingItem:hover {
-  background: rgba(102, 126, 234, 0.1);
-  transform: translateX(5px);
+  background: linear-gradient(135deg, rgba(79, 172, 254, 0.15), rgba(0, 201, 255, 0.1));
+  transform: translateX(8px);
+  border-color: rgba(79, 172, 254, 0.3);
+  box-shadow: 0 8px 25px rgba(79, 172, 254, 0.2);
+}
+
+.settingItem:hover::before {
+  opacity: 1;
 }
 
 .settingInfo {
@@ -99,12 +135,12 @@
   line-height: 1.4;
 }
 
-/* Toggle Switch */
+/* Toggle Switch - Design Moderno */
 .toggle {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 64px;
+  height: 36px;
 }
 
 .toggle input {
@@ -120,71 +156,126 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #cbd5e0;
+  background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
   transition: 0.4s;
-  border-radius: 34px;
+  border-radius: 36px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 28px;
+  width: 28px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
   transition: 0.4s;
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 input:checked + .slider {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #4facfe, #00c9ff);
+  box-shadow: 0 0 20px rgba(79, 172, 254, 0.4);
 }
 
 input:checked + .slider:before {
-  transform: translateX(26px);
+  transform: translateX(28px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-/* Form Inputs */
+/* Hover effect */
+.slider:hover {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 0 4px rgba(79, 172, 254, 0.1);
+}
+
+/* Form Inputs - Design Moderno */
 .selectInput,
 .timeInput {
-  padding: 0.75rem 1rem;
-  border: 1px solid #cbd5e0;
-  border-radius: 8px;
-  background: white;
+  padding: 1rem 1.5rem;
+  border: 2px solid rgba(79, 172, 254, 0.2);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.9));
   color: #2d3748;
   font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  min-width: 150px;
+  min-width: 180px;
+  box-shadow: 0 2px 8px rgba(79, 172, 254, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
 }
 
 .selectInput:focus,
 .timeInput:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #4facfe;
+  box-shadow: 0 0 0 4px rgba(79, 172, 254, 0.15), 0 4px 12px rgba(79, 172, 254, 0.2);
+  transform: translateY(-1px);
 }
 
-/* Action Buttons */
+.selectInput:hover,
+.timeInput:hover {
+  border-color: rgba(79, 172, 254, 0.4);
+  box-shadow: 0 4px 12px rgba(79, 172, 254, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Custom Select Arrow */
+.selectInput {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #4facfe 50%),
+                    linear-gradient(135deg, #4facfe 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(1em + 2px),
+                       calc(100% - 15px) calc(1em + 2px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 3rem;
+}
+
+/* Action Buttons - Design Aprimorado */
 .actionButton {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #4facfe, #00c9ff);
   color: white;
   border: none;
-  border-radius: 20px;
-  font-weight: 500;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.actionButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.actionButton:hover::before {
+  left: 100%;
 }
 
 .actionButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(79, 172, 254, 0.5);
+}
+
+.actionButton:active {
+  transform: translateY(-1px);
 }
 
 .dangerButton {
@@ -209,10 +300,19 @@ input:checked + .slider:before {
 .verifiedBadge {
   background: linear-gradient(135deg, #48bb78, #38a169);
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.verifiedBadge::before {
+  content: '✓';
+  font-weight: bold;
 }
 
 /* Save Section */
@@ -225,22 +325,39 @@ input:checked + .slider:before {
 .saveButton {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 3rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  gap: 1rem;
+  padding: 1.25rem 4rem;
+  background: linear-gradient(135deg, #4facfe, #00c9ff);
   color: white;
   border: none;
-  border-radius: 30px;
+  border-radius: 35px;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 25px rgba(79, 172, 254, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.saveButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.saveButton:hover::before {
+  left: 100%;
 }
 
 .saveButton:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(79, 172, 254, 0.6);
 }
 
 /* Modal */

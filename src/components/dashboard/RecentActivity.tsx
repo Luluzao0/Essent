@@ -13,8 +13,8 @@ const RecentActivity: React.FC = () => {
       description: 'Sessão de 15 minutos concluída',
       time: '2 horas atrás',
       duration: '15 min',
-      color: '#667eea',
-      badge: '🧘‍♀️'
+      color: '#1e3a8a',
+      badge: '🧘‍♂️'
     },
     {
       id: 2,
@@ -24,7 +24,7 @@ const RecentActivity: React.FC = () => {
       description: 'Sequência de 7 dias alcançada!',
       time: '1 dia atrás',
       duration: null,
-      color: '#f6ad55',
+      color: '#374151',
       badge: '🏆'
     },
     {
@@ -35,7 +35,7 @@ const RecentActivity: React.FC = () => {
       description: 'Exercício de respiração 4-7-8',
       time: '2 dias atrás',
       duration: '5 min',
-      color: '#48bb78',
+      color: '#0c4a6e',
       badge: '🫁'
     },
     {
@@ -46,7 +46,7 @@ const RecentActivity: React.FC = () => {
       description: 'Anotação de gratidão adicionada',
       time: '2 dias atrás',
       duration: null,
-      color: '#ed64a6',
+      color: '#475569',
       badge: '📝'
     },
     {
@@ -57,7 +57,7 @@ const RecentActivity: React.FC = () => {
       description: 'Relaxamento guiado noturno',
       time: '3 dias atrás',
       duration: '20 min',
-      color: '#9f7aea',
+      color: '#1f2937',
       badge: '🌙'
     }
   ];
@@ -69,7 +69,7 @@ const RecentActivity: React.FC = () => {
       time: '18:00',
       description: 'Sua sessão diária de meditação',
       type: 'reminder',
-      color: '#667eea'
+      color: '#1e3a8a'
     },
     {
       id: 2,
@@ -77,7 +77,7 @@ const RecentActivity: React.FC = () => {
       time: 'Amanhã 14:00',
       description: 'Técnicas avançadas de mindfulness',
       type: 'event',
-      color: '#48bb78'
+      color: '#0c4a6e'
     },
     {
       id: 3,

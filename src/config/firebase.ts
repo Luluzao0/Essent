@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 
 // Configuração do Firebase usando variáveis de ambiente
 const firebaseConfig = {
@@ -18,6 +19,9 @@ const app = initializeApp(firebaseConfig);
 // Configurar autenticação
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
+
+// Configurar Firestore
+export const db = getFirestore(app);
 
 // Configurar provedor do Google
 googleProvider.setCustomParameters({

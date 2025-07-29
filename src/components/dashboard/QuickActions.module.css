@@ -1,0 +1,363 @@
+/* Quick Actions Styles */
+.quickActions {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Actions Section */
+.actionsSection {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: #2d3748;
+}
+
+.sectionHeader h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  flex: 1;
+}
+
+.goalIcon {
+  font-size: 1.25rem;
+}
+
+.completionRate {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.actionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.actionCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.actionCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.actionCard:hover::before {
+  opacity: 1;
+}
+
+.actionCard:hover {
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.actionIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.actionContent {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.actionContent h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.actionContent p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #718096;
+}
+
+.actionArrow {
+  color: #718096;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.actionCard:hover .actionArrow {
+  color: #667eea;
+  transform: translateX(5px);
+}
+
+/* Goals Section */
+.goalsSection {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.goalsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.goalItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 12px;
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.goalItem:hover {
+  background: rgba(102, 126, 234, 0.1);
+  transform: translateX(5px);
+}
+
+.goalItem.completed {
+  border-left-color: #48bb78;
+  background: rgba(72, 187, 120, 0.1);
+}
+
+.goalCheck {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.checkmark {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 2px solid #cbd5e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.completed .checkmark {
+  background: linear-gradient(135deg, #48bb78, #38a169);
+  border-color: #48bb78;
+}
+
+.goalInfo {
+  flex: 1;
+}
+
+.goalHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.goalEmoji {
+  font-size: 1.125rem;
+}
+
+.goalTitle {
+  font-weight: 500;
+  color: #2d3748;
+  transition: all 0.3s ease;
+}
+
+.completedText {
+  text-decoration: line-through;
+  color: #718096;
+}
+
+.goalProgress {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.progressBar {
+  flex: 1;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 10px;
+}
+
+.progressText {
+  font-size: 0.75rem;
+  color: #718096;
+  font-weight: 500;
+  min-width: 35px;
+}
+
+/* Overall Progress */
+.overallProgress {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.overallProgressBar {
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.overallProgressFill {
+  height: 100%;
+  background: linear-gradient(135deg, #48bb78, #38a169);
+  border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quickActions {
+    gap: 1.5rem;
+  }
+
+  .actionsSection,
+  .goalsSection {
+    padding: 1.5rem;
+  }
+
+  .actionsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .actionCard {
+    padding: 1.25rem;
+    gap: 0.75rem;
+  }
+
+  .actionIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .actionContent h4 {
+    font-size: 0.9rem;
+  }
+
+  .actionContent p {
+    font-size: 0.8rem;
+  }
+
+  .goalItem {
+    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .checkmark {
+    width: 20px;
+    height: 20px;
+  }
+
+  .goalTitle {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .actionsSection,
+  .goalsSection {
+    padding: 1rem;
+  }
+
+  .sectionHeader h3 {
+    font-size: 1.1rem;
+  }
+
+  .actionCard {
+    padding: 1rem;
+  }
+
+  .actionIcon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .goalItem {
+    padding: 0.75rem;
+  }
+
+  .goalHeader {
+    gap: 0.5rem;
+  }
+
+  .progressText {
+    font-size: 0.7rem;
+    min-width: 30px;
+  }
+}

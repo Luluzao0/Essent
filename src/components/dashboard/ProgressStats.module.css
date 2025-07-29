@@ -1,0 +1,379 @@
+/* Progress Stats Styles */
+.progressStats {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Stats Grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.statCard {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.45);
+}
+
+.statHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.statIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.statInfo {
+  flex: 1;
+}
+
+.statInfo h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #718096;
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statValue {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.unit {
+  font-size: 0.9rem;
+  color: #718096;
+  font-weight: 500;
+}
+
+.progressContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.progressBar {
+  flex: 1;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.8s ease;
+}
+
+.progressText {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4a5568;
+  min-width: 40px;
+}
+
+.statDescription {
+  color: #718096;
+  font-size: 0.875rem;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Weekly Chart */
+.weeklyChart {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.chartTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #2d3748;
+}
+
+.chartTitle h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.chartLegend {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #718096;
+}
+
+.legendDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.legendDot.completed {
+  background: linear-gradient(135deg, #48bb78, #38a169);
+}
+
+.legendDot.pending {
+  background: #e2e8f0;
+}
+
+.chartContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+  height: 120px;
+  padding: 0 1rem;
+}
+
+.dayColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.dayLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.dayBar {
+  display: flex;
+  align-items: end;
+  height: 60px;
+  width: 100%;
+  max-width: 40px;
+}
+
+.barFill {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  min-height: 4px;
+  transition: all 0.3s ease;
+}
+
+.barFill.completed {
+  background: linear-gradient(to top, #48bb78, #68d391);
+}
+
+.barFill.pending {
+  background: #e2e8f0;
+}
+
+.dayDuration {
+  font-size: 0.75rem;
+  color: #718096;
+  font-weight: 500;
+}
+
+/* Insights Card */
+.insightsCard {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.insightHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: #2d3748;
+}
+
+.insightHeader h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.insights {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.insight {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+  transition: all 0.3s ease;
+}
+
+.insight:hover {
+  background: rgba(102, 126, 234, 0.1);
+  transform: translateX(5px);
+}
+
+.insightIcon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.insightText {
+  color: #4a5568;
+  line-height: 1.5;
+}
+
+.insightText strong {
+  color: #2d3748;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .statCard {
+    padding: 1.25rem;
+  }
+
+  .statIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .value {
+    font-size: 1.5rem;
+  }
+
+  .weeklyChart,
+  .insightsCard {
+    padding: 1.5rem;
+  }
+
+  .chartHeader {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .chartLegend {
+    gap: 1rem;
+  }
+
+  .chartContent {
+    gap: 0.5rem;
+    padding: 0;
+  }
+
+  .dayBar {
+    max-width: 30px;
+  }
+
+  .insights {
+    gap: 0.75rem;
+  }
+
+  .insight {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .progressStats {
+    gap: 1.5rem;
+  }
+
+  .statCard {
+    padding: 1rem;
+  }
+
+  .statHeader {
+    gap: 0.75rem;
+  }
+
+  .statIcon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .value {
+    font-size: 1.25rem;
+  }
+
+  .weeklyChart,
+  .insightsCard {
+    padding: 1rem;
+  }
+
+  .chartTitle h3 {
+    font-size: 1.1rem;
+  }
+
+  .chartContent {
+    height: 100px;
+  }
+
+  .dayBar {
+    height: 50px;
+    max-width: 25px;
+  }
+
+  .insightIcon {
+    font-size: 1.25rem;
+  }
+}

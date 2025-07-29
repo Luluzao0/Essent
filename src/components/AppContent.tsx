@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { useFirstLogin } from '../hooks/useFirstLogin';
 import Welcome from '../pages/Welcome';
@@ -10,6 +11,21 @@ interface AppContentProps {
 const AppContent: React.FC<AppContentProps> = ({ children }) => {
   const { currentUser } = useAuth();
   const { isFirstLogin, isLoading } = useFirstLogin();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Redirecionar usuário logado para dashboard (exceto se já estiver no dashboard ou welcome)
+  useEffect(() => {
+    if (currentUser && !isFirstLogin && !isLoading) {
+      const currentPath = location.pathname;
+      const publicPaths = ['/', '/quotes', '/videos', '/meditation', '/practices', '/resources', '/ai-tech'];
+      
+      // Se estiver em uma página pública e logado, redirecionar para dashboard
+      if (publicPaths.includes(currentPath)) {
+        navigate('/dashboard');
+      }
+    }
+  }, [currentUser, isFirstLogin, isLoading, location.pathname, navigate]);
 
   // Mostrar loading enquanto verifica primeiro login
   if (isLoading) {

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
 import Quotes from './pages/Quotes';
 import VideosSimple from './pages/VideosSimple';
 import Meditation from './pages/Meditation';
@@ -17,6 +18,8 @@ import SEOAutomationDemo from './components/SEOAutomationDemo';
 import { PageTransition } from './components/PageTransition';
 import { AuthProvider } from './context/AuthContext';
 import AppContent from './components/AppContent';
+import ProtectedRoute from './components/ProtectedRoute';
+import DebugEnv from './components/DebugEnv';
 import './styles/index.css';
 
 function App() {
@@ -25,12 +28,20 @@ function App() {
       <Router>
         <AppContent>
           <div style={{ minHeight: '100vh' }}>
+            <DebugEnv />
             <Header />
             <main>
               <Routes>
                 <Route path="/" element={
                   <PageTransition>
                     <Home />
+                  </PageTransition>
+                } />
+                <Route path="/dashboard" element={
+                  <PageTransition>
+                    <ProtectedRoute>
+                      <Dashboard />
+                    </ProtectedRoute>
                   </PageTransition>
                 } />
                 <Route path="/quotes" element={

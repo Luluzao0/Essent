@@ -10,7 +10,8 @@ import {
   VideoIcon,
   RocketIcon,
   PersonIcon,
-  ExitIcon
+  ExitIcon,
+  DashboardIcon
 } from '@radix-ui/react-icons';
 import Logo from './Logo';
 import LoginModal from './LoginModal';
@@ -43,10 +44,17 @@ const Header: React.FC = () => {
           <div className={styles.navigationContainer}>
             {/* Desktop Menu Items */}
             <div className={styles.desktopMenu}>
-              <Link to="/" className={styles.navLink}>
-                <HomeIcon width={18} height={18} />
-                Início
-              </Link>
+              {currentUser ? (
+                <Link to="/dashboard" className={styles.navLink}>
+                  <DashboardIcon width={18} height={18} />
+                  Dashboard
+                </Link>
+              ) : (
+                <Link to="/" className={styles.navLink}>
+                  <HomeIcon width={18} height={18} />
+                  Início
+                </Link>
+              )}
 
               <Link to="/quotes" className={styles.navLink}>
                 <ChatBubbleIcon width={18} height={18} />

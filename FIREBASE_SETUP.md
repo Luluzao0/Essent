@@ -41,11 +41,34 @@ VITE_FIREBASE_MEASUREMENT_ID=seu-measurement-id
 
 **⚠️ IMPORTANTE**: O arquivo `.env` já está no `.gitignore`, então suas credenciais não serão enviadas para o repositório.
 
-## 5. Configurar domínio autorizado (Para produção)
+## 5. Configurar Variáveis de Ambiente no Vercel
+
+**⚠️ IMPORTANTE**: Se você fez deploy no Vercel, precisa configurar as variáveis lá também!
+
+### Passo a Passo no Vercel:
+1. Acesse [vercel.com](https://vercel.com) e faça login
+2. Clique no seu projeto "essent"
+3. Vá em **Settings** > **Environment Variables**
+4. Adicione **CADA** variável individualmente clicando em "Add New":
+
+```
+VITE_FIREBASE_API_KEY = AIzaSyCKD4Mq_X6NGo-LGaNM2ZEp9p3jO8b1zjg
+VITE_FIREBASE_AUTH_DOMAIN = essent-8689b.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID = essent-8689b
+VITE_FIREBASE_STORAGE_BUCKET = essent-8689b.firebasestorage.app
+VITE_FIREBASE_MESSAGING_SENDER_ID = 763662394966
+VITE_FIREBASE_APP_ID = 1:763662394966:web:ad4b93cb12de2f16193df7
+VITE_FIREBASE_MEASUREMENT_ID = G-BBGCJG5M64
+```
+
+5. Para cada variável, selecione: **Production**, **Preview**, e **Development**
+6. Após adicionar todas, vá em **Deployments** > clique nos 3 pontos (...) > **Redeploy**
+
+## 6. Configurar domínio autorizado (Para produção)
 1. Na seção "Authentication" > "Settings" > "Authorized domains"
 2. Adicione seu domínio de produção (ex: `essentpsi.vercel.app`)
 
-## 6. Teste
+## 7. Teste
 Após configurar, teste o login:
 1. Execute `npm run dev`
 2. Clique no botão "Entrar" no header

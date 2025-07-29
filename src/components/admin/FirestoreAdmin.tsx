@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Database, Trash2, Users, Quote, Video, Image, Folder } from 'lucide-react';
+import { Database, Trash2, Users, Quote, Video, Image } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import { 
   initializeFirestoreData, 

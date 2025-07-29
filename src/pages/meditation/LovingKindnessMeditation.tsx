@@ -20,8 +20,8 @@ const LovingKindnessVisualizer: React.FC<{ color: string }> = ({ color }) => {
   ], []);
 
   useEffect(() => {
-    let heartInterval: number;
-    let phaseTimeout: number;
+    let heartInterval: NodeJS.Timeout;
+    let phaseTimeout: NodeJS.Timeout;
     
     if (isActive) {
       let currentPhaseIndex = 0;

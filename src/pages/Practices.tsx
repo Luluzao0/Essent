@@ -2,12 +2,6 @@ import { motion } from 'framer-motion';
 import MeditationSection from '../components/MeditationSection';
 import { SectionTransition } from '../components/PageTransition';
 import SEO from '../components/SEO';
-import { 
-  TokensIcon,
-  HeartIcon,
-  SunIcon,
-  PersonIcon
-} from '@radix-ui/react-icons';
 
 const Practices = () => {
   return (
@@ -73,7 +67,7 @@ const Practices = () => {
               gap: 'clamp(0.5rem, 2vw, 0.75rem)',
               marginBottom: 'clamp(0.8rem, 2vw, 1rem)'
             }}>
-              <TokensIcon width={32} height={32} color="var(--primary-600)" />
+              {/* <TokensIcon width={32} height={32} color="var(--primary-600)" /> */}
               <h2 style={{
                 fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
                 fontWeight: '700',
@@ -105,7 +99,7 @@ const Practices = () => {
               gap: 'clamp(0.5rem, 2vw, 0.75rem)',
               marginBottom: 'clamp(2rem, 4vw, 3rem)'
             }}>
-              <HeartIcon width={32} height={32} color="var(--primary-600)" />
+              {/* <HeartIcon width={32} height={32} color="var(--primary-600)" /> */}
               <h2 style={{
                 fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
                 fontWeight: '700',
@@ -353,7 +347,7 @@ const Practices = () => {
               gap: 'clamp(0.5rem, 2vw, 0.75rem)',
               marginBottom: 'clamp(2rem, 4vw, 3rem)'
             }}>
-              <SunIcon width={32} height={32} color="var(--primary-600)" />
+              {/* <SunIcon width={32} height={32} color="var(--primary-600)" /> */}
               <h2 style={{
                 fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
                 fontWeight: '700',
@@ -547,7 +541,7 @@ const Practices = () => {
               gap: 'clamp(0.5rem, 2vw, 0.75rem)',
               marginBottom: 'clamp(2rem, 4vw, 3rem)'
             }}>
-              <PersonIcon width={32} height={32} color="var(--primary-600)" />
+              {/* <PersonIcon width={32} height={32} color="var(--primary-600)" /> */}
               <h2 style={{
                 fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
                 fontWeight: '700',
@@ -619,7 +613,7 @@ const Practices = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.6 }}
               style={{
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                background: 'linear-gradient(135deg, #909bcbff 0%, #9b8fa7ff 100%)',
                 borderRadius: '20px',
                 padding: 'clamp(2rem, 5vw, 2.5rem)',
                 textAlign: 'center',

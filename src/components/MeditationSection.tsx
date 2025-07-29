@@ -78,7 +78,7 @@ const MeditationSection = () => {
 
   // Timer effect
   useEffect(() => {
-    let interval: number;
+    let interval: NodeJS.Timeout;
     if (isActive) {
       interval = setInterval(() => {
         setTimer(timer => timer + 1);

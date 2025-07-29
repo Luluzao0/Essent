@@ -11,7 +11,7 @@ const BreathingVisualizer3D: React.FC<{ color: string }> = ({ color }) => {
   const [cycle, setCycle] = useState(0);
 
   useEffect(() => {
-    let interval: number;
+    let interval: NodeJS.Timeout;
     
     if (isActive && phase !== 'pause') {
       interval = setInterval(() => {

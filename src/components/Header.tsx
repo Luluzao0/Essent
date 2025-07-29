@@ -7,7 +7,8 @@ import {
   HamburgerMenuIcon,
   Cross1Icon,
   MagicWandIcon,
-  VideoIcon
+  VideoIcon,
+  RocketIcon
 } from '@radix-ui/react-icons';
 import Logo from './Logo';
 import styles from './Header.module.css';
@@ -50,6 +51,11 @@ const Header: React.FC = () => {
             <Link to="/practices" className={styles.navLink}>
               <MixIcon width={18} height={18} />
               Práticas
+            </Link>
+
+            <Link to="/ai-tech" className={styles.navLink}>
+              <RocketIcon width={18} height={18} />
+              AI&Tech
             </Link>
           </div>
 
@@ -110,6 +116,15 @@ const Header: React.FC = () => {
             >
               <MixIcon width={20} height={20} />
               Práticas
+            </Link>
+
+            <Link
+              to="/ai-tech"
+              onClick={() => setIsMenuOpen(false)}
+              className={styles.mobileNavLink}
+            >
+              <RocketIcon width={20} height={20} />
+              AI&Tech
             </Link>
           </div>
         </div>

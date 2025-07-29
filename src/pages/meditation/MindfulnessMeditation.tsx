@@ -15,7 +15,7 @@ const MindfulnessVisualizer: React.FC<{ color: string }> = ({ color }) => {
   ], []);
 
   useEffect(() => {
-    let interval: number;
+    let interval: NodeJS.Timeout;
     
     if (isActive) {
       // Fase 1: Mente dispersa (0-10s)

@@ -11,6 +11,7 @@ import MindfulnessMeditation from './pages/meditation/MindfulnessMeditation';
 import LovingKindnessMeditation from './pages/meditation/LovingKindnessMeditation';
 import Practices from './pages/Practices';
 import Resources from './pages/Resources';
+import AITech from './pages/AITech';
 import SEODashboard from './components/SEODashboard';
 import SEOAutomationDemo from './components/SEOAutomationDemo';
 import { PageTransition } from './components/PageTransition';
@@ -66,6 +67,11 @@ function App() {
             <Route path="/practices" element={
               <PageTransition>
                 <Practices />
+              </PageTransition>
+            } />
+            <Route path="/ai-tech" element={
+              <PageTransition>
+                <AITech />
               </PageTransition>
             } />
             <Route path="/resources" element={

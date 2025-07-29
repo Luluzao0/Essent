@@ -23,19 +23,23 @@ Para configurar o Firebase no seu projeto Essent, siga estes passos:
 4. Registre seu app com um apelido (ex: "essent-web")
 5. Copie o objeto de configuração `firebaseConfig`
 
-## 4. Atualizar arquivo de configuração
-Abra o arquivo `src/config/firebase.ts` e substitua as configurações:
+## 4. Configurar Variáveis de Ambiente
+1. No projeto, você encontrará o arquivo `.env.example`
+2. Copie o arquivo `.env.example` para `.env` (se ainda não existir)
+3. Substitua os valores do Firebase no arquivo `.env`:
 
-```typescript
-const firebaseConfig = {
-  apiKey: "sua-api-key-aqui",
-  authDomain: "seu-project-id.firebaseapp.com", 
-  projectId: "seu-project-id",
-  storageBucket: "seu-project-id.appspot.com",
-  messagingSenderId: "seu-sender-id",
-  appId: "seu-app-id"
-};
+```env
+# Firebase Configuration
+VITE_FIREBASE_API_KEY=sua-api-key-aqui
+VITE_FIREBASE_AUTH_DOMAIN=seu-project-id.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=seu-project-id
+VITE_FIREBASE_STORAGE_BUCKET=seu-project-id.firebasestorage.app
+VITE_FIREBASE_MESSAGING_SENDER_ID=seu-sender-id
+VITE_FIREBASE_APP_ID=seu-app-id
+VITE_FIREBASE_MEASUREMENT_ID=seu-measurement-id
 ```
+
+**⚠️ IMPORTANTE**: O arquivo `.env` já está no `.gitignore`, então suas credenciais não serão enviadas para o repositório.
 
 ## 5. Configurar domínio autorizado (Para produção)
 1. Na seção "Authentication" > "Settings" > "Authorized domains"

@@ -1,16 +1,15 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 
-// Configuração do Firebase
-// IMPORTANTE: Substitua com suas próprias configurações do Firebase Console
+// Configuração do Firebase usando variáveis de ambiente
 const firebaseConfig = {
-  apiKey: "AIzaSyCKD4Mq_X6NGo-LGaNM2ZEp9p3jO8b1zjg",
-  authDomain: "essent-8689b.firebaseapp.com",
-  projectId: "essent-8689b",
-  storageBucket: "essent-8689b.firebasestorage.app",
-  messagingSenderId: "763662394966",
-  appId: "1:763662394966:web:ad4b93cb12de2f16193df7",
-  measurementId: "G-BBGCJG5M64"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Inicializar Firebase

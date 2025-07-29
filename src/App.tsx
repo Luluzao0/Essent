@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
+import ConditionalHeader from './components/ConditionalHeader';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
+import TherapyChat from './pages/TherapyChat';
 import Quotes from './pages/Quotes';
 import VideosSimple from './pages/VideosSimple';
 import Meditation from './pages/Meditation';
@@ -29,7 +30,7 @@ function App() {
         <AppContent>
           <div style={{ minHeight: '100vh' }}>
             <DebugEnv />
-            <Header />
+            <ConditionalHeader />
             <main>
               <Routes>
                 <Route path="/" element={
@@ -41,6 +42,13 @@ function App() {
                   <PageTransition>
                     <ProtectedRoute>
                       <Dashboard />
+                    </ProtectedRoute>
+                  </PageTransition>
+                } />
+                <Route path="/therapy-chat" element={
+                  <PageTransition>
+                    <ProtectedRoute>
+                      <TherapyChat />
                     </ProtectedRoute>
                   </PageTransition>
                 } />

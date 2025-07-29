@@ -45,41 +45,56 @@ const Header: React.FC = () => {
             {/* Desktop Menu Items */}
             <div className={styles.desktopMenu}>
               {currentUser ? (
-                <Link to="/dashboard" className={styles.navLink}>
-                  <DashboardIcon width={18} height={18} />
-                  Dashboard
-                </Link>
+                <>
+                  <Link to="/dashboard" className={styles.navLink}>
+                    <DashboardIcon width={18} height={18} />
+                    Dashboard
+                  </Link>
+                  <Link to="/quotes" className={styles.navLink}>
+                    <ChatBubbleIcon width={18} height={18} />
+                    Frases
+                  </Link>
+                  <Link to="/videos" className={styles.navLink}>
+                    <VideoIcon width={18} height={18} />
+                    Vídeos
+                  </Link>
+                  <Link to="/meditation" className={styles.navLink}>
+                    <MagicWandIcon width={18} height={18} />
+                    Meditação
+                  </Link>
+                  <Link to="/practices" className={styles.navLink}>
+                    <MixIcon width={18} height={18} />
+                    Práticas
+                  </Link>
+                </>
               ) : (
-                <Link to="/" className={styles.navLink}>
-                  <HomeIcon width={18} height={18} />
-                  Início
-                </Link>
+                <>
+                  <Link to="/" className={styles.navLink}>
+                    <HomeIcon width={18} height={18} />
+                    Início
+                  </Link>
+                  <Link to="/quotes" className={styles.navLink}>
+                    <ChatBubbleIcon width={18} height={18} />
+                    Frases
+                  </Link>
+                  <Link to="/videos" className={styles.navLink}>
+                    <VideoIcon width={18} height={18} />
+                    Vídeos
+                  </Link>
+                  <Link to="/meditation" className={styles.navLink}>
+                    <MagicWandIcon width={18} height={18} />
+                    Meditação
+                  </Link>
+                  <Link to="/practices" className={styles.navLink}>
+                    <MixIcon width={18} height={18} />
+                    Práticas
+                  </Link>
+                  <Link to="/ai-tech" className={styles.navLink}>
+                    <RocketIcon width={18} height={18} />
+                    AI&Tech
+                  </Link>
+                </>
               )}
-
-              <Link to="/quotes" className={styles.navLink}>
-                <ChatBubbleIcon width={18} height={18} />
-                Frases
-              </Link>
-
-              <Link to="/videos" className={styles.navLink}>
-                <VideoIcon width={18} height={18} />
-                Vídeos
-              </Link>
-
-              <Link to="/meditation" className={styles.navLink}>
-                <MagicWandIcon width={18} height={18} />
-                Meditação
-              </Link>
-
-              <Link to="/practices" className={styles.navLink}>
-                <MixIcon width={18} height={18} />
-                Práticas
-              </Link>
-
-              <Link to="/ai-tech" className={styles.navLink}>
-                <RocketIcon width={18} height={18} />
-                AI&Tech
-              </Link>
 
               {/* User Authentication */}
               {currentUser ? (
@@ -131,59 +146,101 @@ const Header: React.FC = () => {
         {isMenuOpen && (
           <div className={styles.mobileMenu}>
             <div className={styles.mobileMenuContent}>
-              <Link
-                to="/"
-                onClick={() => setIsMenuOpen(false)}
-                className={styles.mobileNavLink}
-              >
-                <HomeIcon width={20} height={20} />
-                Início
-              </Link>
-
-              <Link
-                to="/quotes"
-                onClick={() => setIsMenuOpen(false)}
-                className={styles.mobileNavLink}
-              >
-                <ChatBubbleIcon width={20} height={20} />
-                Frases
-              </Link>
-
-              <Link
-                to="/videos"
-                onClick={() => setIsMenuOpen(false)}
-                className={styles.mobileNavLink}
-              >
-                <VideoIcon width={20} height={20} />
-                Vídeos
-              </Link>
-
-              <Link
-                to="/meditation"
-                onClick={() => setIsMenuOpen(false)}
-                className={styles.mobileNavLink}
-              >
-                <MagicWandIcon width={20} height={20} />
-                Meditação
-              </Link>
-
-              <Link
-                to="/practices"
-                onClick={() => setIsMenuOpen(false)}
-                className={styles.mobileNavLink}
-              >
-                <MixIcon width={20} height={20} />
-                Práticas
-              </Link>
-
-              <Link
-                to="/ai-tech"
-                onClick={() => setIsMenuOpen(false)}
-                className={styles.mobileNavLink}
-              >
-                <RocketIcon width={20} height={20} />
-                AI&Tech
-              </Link>
+              {currentUser ? (
+                <>
+                  <Link
+                    to="/dashboard"
+                    onClick={() => setIsMenuOpen(false)}
+                    className={styles.mobileNavLink}
+                  >
+                    <DashboardIcon width={20} height={20} />
+                    Dashboard
+                  </Link>
+                  <Link
+                    to="/quotes"
+                    onClick={() => setIsMenuOpen(false)}
+                    className={styles.mobileNavLink}
+                  >
+                    <ChatBubbleIcon width={20} height={20} />
+                    Frases
+                  </Link>
+                  <Link
+                    to="/videos"
+                    onClick={() => setIsMenuOpen(false)}
+                    className={styles.mobileNavLink}
+                  >
+                    <VideoIcon width={20} height={20} />
+                    Vídeos
+                  </Link>
+                  <Link
+                    to="/meditation"
+                    onClick={() => setIsMenuOpen(false)}
+                    className={styles.mobileNavLink}
+                  >
+                    <MagicWandIcon width={20} height={20} />
+                    Meditação
+                  </Link>
+                  <Link
+                    to="/practices"
+                    onClick={() => setIsMenuOpen(false)}
+                    className={styles.mobileNavLink}
+                  >
+                    <MixIcon width={20} height={20} />
+                    Práticas
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/"
+                    onClick={() => setIsMenuOpen(false)}
+                    className={styles.mobileNavLink}
+                  >
+                    <HomeIcon width={20} height={20} />
+                    Início
+                  </Link>
+                  <Link
+                    to="/quotes"
+                    onClick={() => setIsMenuOpen(false)}
+                    className={styles.mobileNavLink}
+                  >
+                    <ChatBubbleIcon width={20} height={20} />
+                    Frases
+                  </Link>
+                  <Link
+                    to="/videos"
+                    onClick={() => setIsMenuOpen(false)}
+                    className={styles.mobileNavLink}
+                  >
+                    <VideoIcon width={20} height={20} />
+                    Vídeos
+                  </Link>
+                  <Link
+                    to="/meditation"
+                    onClick={() => setIsMenuOpen(false)}
+                    className={styles.mobileNavLink}
+                  >
+                    <MagicWandIcon width={20} height={20} />
+                    Meditação
+                  </Link>
+                  <Link
+                    to="/practices"
+                    onClick={() => setIsMenuOpen(false)}
+                    className={styles.mobileNavLink}
+                  >
+                    <MixIcon width={20} height={20} />
+                    Práticas
+                  </Link>
+                  <Link
+                    to="/ai-tech"
+                    onClick={() => setIsMenuOpen(false)}
+                    className={styles.mobileNavLink}
+                  >
+                    <RocketIcon width={20} height={20} />
+                    AI&Tech
+                  </Link>
+                </>
+              )}
 
               {/* Mobile Auth */}
               {currentUser ? (

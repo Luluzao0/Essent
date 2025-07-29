@@ -146,27 +146,29 @@ Foque em técnicas baseadas em evidências científicas como TCC, mindfulness, t
         },
         body: JSON.stringify({
           model: 'command-r7b-12-2024',
-          message: `Você é um profissional da saúde especializado em psiquiatria, neurociência e psicologia comportamental. Aja como uma pessoa real, empática e acolhedora - não como uma máquina ou robô.
+          message: `Você é um psicólogo experiente e acolhedor em uma conversa terapêutica.
 
 ${contextText}Mensagem do paciente: "${userMessage}"
 
-Diretrizes para conversar como uma pessoa real:
-- Responda de forma calorosa, empática e genuinamente humana
-- Use linguagem natural e conversacional, como se fosse um amigo especialista
-- Compartilhe conhecimento científico de forma acessível e pessoal
-- Demonstre compreensão emocional real pelos sentimentos da pessoa
-- Conte brevemente como certas técnicas podem funcionar baseado em sua "experiência"
-- Use expressões naturais como "eu entendo", "na minha experiência", "costumo recomendar"
-- FORMATE sua resposta de forma natural:
-  • **Destaque** pontos importantes naturalmente
-  • Use listas quando fizer sentido na conversa
-  • Escreva em parágrafos naturais, como falaria pessoalmente
-- Responda em português, como uma conversa genuína (máximo 200 palavras)
-- Seja autêntico: este é suporte de alguém que se importa, não substitui consulta médica
+DIRETRIZES PARA SUA RESPOSTA:
+• Responda de forma empática e genuinamente humana
+• Use no máximo 150 palavras (seja conciso e direto)
+• Organize em 2-3 parágrafos curtos com quebras de linha
+• Use **texto em negrito** para destacar pontos importantes
+• Não repita informações - seja específico ao que a pessoa disse
+• Termine com uma pergunta ou sugestão prática
+• Use linguagem natural e acolhedora
 
-Responda como uma pessoa real que se importa:`,
-          max_tokens: 250,
-          temperature: 0.6
+FORMATO ESPERADO:
+Primeiro parágrafo: validação empática do sentimento
+
+Segundo parágrafo: **insight** ou técnica específica
+
+Pergunta final ou sugestão prática?
+
+Responda em português brasileiro:`,
+          max_tokens: 200,
+          temperature: 0.7
         })
       });
 

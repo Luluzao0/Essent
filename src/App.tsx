@@ -4,6 +4,10 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import TherapyChat from './pages/TherapyChat';
+import BehaviorAnalysis from './pages/BehaviorAnalysis';
+import MentalHealthDashboard from './pages/MentalHealthDashboard';
+import PersonalizedRecommendations from './pages/PersonalizedRecommendations';
+import EmotionDetection from './pages/EmotionDetection';
 import Quotes from './pages/Quotes';
 import VideosSimple from './pages/VideosSimple';
 import Meditation from './pages/Meditation';
@@ -49,6 +53,34 @@ function App() {
                   <PageTransition>
                     <ProtectedRoute>
                       <TherapyChat />
+                    </ProtectedRoute>
+                  </PageTransition>
+                } />
+                <Route path="/behavior-analysis" element={
+                  <PageTransition>
+                    <ProtectedRoute>
+                      <BehaviorAnalysis />
+                    </ProtectedRoute>
+                  </PageTransition>
+                } />
+                <Route path="/mental-health-dashboard" element={
+                  <PageTransition>
+                    <ProtectedRoute>
+                      <MentalHealthDashboard />
+                    </ProtectedRoute>
+                  </PageTransition>
+                } />
+                <Route path="/recommendations" element={
+                  <PageTransition>
+                    <ProtectedRoute>
+                      <PersonalizedRecommendations />
+                    </ProtectedRoute>
+                  </PageTransition>
+                } />
+                <Route path="/emotion-detection" element={
+                  <PageTransition>
+                    <ProtectedRoute>
+                      <EmotionDetection />
                     </ProtectedRoute>
                   </PageTransition>
                 } />

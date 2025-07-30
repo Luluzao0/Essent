@@ -1,0 +1,443 @@
+/* Página de Análise Comportamental */
+
+.behaviorAnalysisPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0e7ef 0%, #f5f7fa 100%);
+  padding-top: 70px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+/* Header da página */
+.pageHeader {
+  margin-bottom: 32px;
+  background: rgba(59, 130, 246, 0.03);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.titleSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.titleIcon {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+  padding: 8px;
+  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+}
+
+.titleSection h1 {
+  color: #1e293b;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.5px;
+}
+
+.titleSection p {
+  color: #64748b;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Seletor de período */
+.periodSelector {
+  display: flex;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.periodButton {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.periodButton:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+}
+
+.periodButton.active {
+  background: #3b82f6;
+  color: white;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* Loading */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.loadingSpinner {
+  color: #3b82f6;
+  margin-bottom: 16px;
+}
+
+.loadingContainer p {
+  color: #64748b;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Grid de métricas */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.metricCard {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.metricCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15);
+}
+
+.metricHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.metricIcon {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+  padding: 6px;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+}
+
+.metricLabel {
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.metricValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+
+.metricChange {
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metricChange.positive {
+  color: #059669;
+}
+
+.metricChange.negative {
+  color: #dc2626;
+}
+
+.changeLabel {
+  font-size: 12px;
+  font-weight: 400;
+  color: #64748b;
+}
+
+/* Seção de padrões */
+.patternsSection {
+  margin-bottom: 40px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.sectionHeader svg {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+  padding: 6px;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+}
+
+.sectionHeader h2 {
+  color: #1e293b;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.patternsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.patternCard {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.patternCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #64748b;
+}
+
+.patternCard.positive::before {
+  background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+}
+
+.patternCard.negative::before {
+  background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+}
+
+.patternCard.neutral::before {
+  background: linear-gradient(90deg, #64748b 0%, #94a3b8 100%);
+}
+
+.patternHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.patternHeader h3 {
+  color: #1e293b;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  flex: 1;
+}
+
+.patternMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.frequency {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.trend {
+  font-size: 16px;
+}
+
+.patternDescription {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 16px 0;
+}
+
+.patternFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.frequencyBar {
+  width: 100%;
+  height: 4px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.frequencyFill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
+  border-radius: 2px;
+  transition: width 0.8s ease;
+}
+
+.impactLabel {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Seção de insights */
+.insightsSection {
+  margin-bottom: 40px;
+}
+
+.insightsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.insightCard {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.insightCard h4 {
+  color: #1e293b;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+
+.insightCard p {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px 12px;
+  }
+
+  .headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .titleSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .titleSection h1 {
+    font-size: 24px;
+  }
+
+  .periodSelector {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .metricsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .patternsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .insightsContainer {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .metricCard,
+  .patternCard,
+  .insightCard {
+    padding: 20px;
+  }
+
+  .patternHeader {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .patternMeta {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 12px 8px;
+  }
+
+  .pageHeader {
+    padding: 16px;
+  }
+
+  .titleSection h1 {
+    font-size: 20px;
+  }
+
+  .titleIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .metricValue {
+    font-size: 28px;
+  }
+
+  .metricCard,
+  .patternCard,
+  .insightCard {
+    padding: 16px;
+  }
+}

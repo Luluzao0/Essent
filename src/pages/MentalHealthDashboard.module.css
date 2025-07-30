@@ -1,0 +1,557 @@
+/* Dashboard de Saúde Mental */
+
+.mentalHealthPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0e7ef 0%, #f5f7fa 100%);
+  padding-top: 70px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+/* Header */
+.pageHeader {
+  margin-bottom: 32px;
+  background: rgba(59, 130, 246, 0.03);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.titleSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.titleIcon {
+  color: #ec4899;
+  background: rgba(236, 72, 153, 0.1);
+  padding: 8px;
+  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+}
+
+.titleSection h1 {
+  color: #1e293b;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.5px;
+}
+
+.titleSection p {
+  color: #64748b;
+  font-size: 16px;
+  margin: 0;
+}
+
+.dateSelector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.dateSelector svg {
+  color: #3b82f6;
+}
+
+.dateInput {
+  border: none;
+  background: transparent;
+  color: #1e293b;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.dateInput:focus {
+  outline: none;
+}
+
+/* Loading */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.loadingSpinner {
+  color: #ec4899;
+  margin-bottom: 16px;
+}
+
+.loadingContainer p {
+  color: #64748b;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Visão geral do bem-estar */
+.wellnessOverview {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 32px;
+  margin-bottom: 40px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.overallScore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scoreCircle {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.scoreProgress {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.scoreInner {
+  width: 140px;
+  height: 140px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.scoreValue {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1;
+}
+
+.scoreLabel {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.scoreBreakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.scoreItem {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.scoreItemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.scoreItemLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.scoreItemValue {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.scoreBar {
+  width: 100%;
+  height: 6px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.scoreBarFill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1s ease;
+}
+
+/* Estado atual */
+.currentState {
+  margin-bottom: 40px;
+}
+
+.currentState h2 {
+  color: #1e293b;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stateGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.stateCard {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.stateCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15);
+}
+
+.stateIcon {
+  font-size: 32px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 12px;
+  color: #3b82f6;
+}
+
+.stateInfo h4 {
+  color: #1e293b;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.stateValue {
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Seções gerais */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.sectionHeader svg {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+  padding: 6px;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+}
+
+.sectionHeader h2 {
+  color: #1e293b;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* Metas */
+.goalsSection {
+  margin-bottom: 40px;
+}
+
+.goalsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.goalCard {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  transition: all 0.3s ease;
+}
+
+.goalCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15);
+}
+
+.goalCard.completed {
+  border-color: #059669;
+  background: rgba(5, 150, 105, 0.05);
+}
+
+.goalHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.goalIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.goalHeader h4 {
+  color: #1e293b;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  flex: 1;
+}
+
+.completedIcon {
+  color: #059669;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.goalProgress {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.goalNumbers {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.goalTarget {
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.goalBar {
+  width: 100%;
+  height: 8px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.goalBarFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s ease;
+}
+
+.goalPercentage {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Insights */
+.insightsSection {
+  margin-bottom: 40px;
+}
+
+.insightsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.insightCard {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.insightCard h4 {
+  color: #1e293b;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+
+.insightCard p {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .wellnessOverview {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .overallScore {
+    order: 2;
+  }
+
+  .scoreBreakdown {
+    order: 1;
+  }
+
+  .scoreCircle {
+    width: 160px;
+    height: 160px;
+  }
+
+  .scoreInner {
+    width: 120px;
+    height: 120px;
+  }
+
+  .scoreValue {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px 12px;
+  }
+
+  .headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .titleSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .titleSection h1 {
+    font-size: 24px;
+  }
+
+  .wellnessOverview {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .stateGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .goalsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .insightsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .scoreBreakdown {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 12px 8px;
+  }
+
+  .pageHeader {
+    padding: 16px;
+  }
+
+  .titleSection h1 {
+    font-size: 20px;
+  }
+
+  .titleIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .wellnessOverview {
+    padding: 16px;
+  }
+
+  .stateCard {
+    padding: 16px;
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .stateIcon {
+    margin: 0 auto;
+  }
+
+  .goalCard,
+  .insightCard {
+    padding: 16px;
+  }
+
+  .scoreBreakdown {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

@@ -7,7 +7,11 @@ import {
   Cross1Icon,
   PersonIcon,
   ExitIcon,
-  BellIcon
+  BellIcon,
+  ActivityLogIcon,
+  HeartIcon,
+  StarIcon,
+  CameraIcon
 } from '@radix-ui/react-icons';
 import Logo from './Logo';
 import { useAuth } from '../hooks/useAuth';
@@ -43,6 +47,10 @@ const LoggedHeader: React.FC = () => {
   const navigationLinks = useMemo(() => [
     { to: '/dashboard', label: 'Dashboard', icon: DashboardIcon },
     { to: '/therapy-chat', label: 'Terapia IA', icon: ChatBubbleIcon },
+    { to: '/behavior-analysis', label: 'Análise ML', icon: ActivityLogIcon },
+    { to: '/mental-health-dashboard', label: 'Saúde Mental', icon: HeartIcon },
+    { to: '/recommendations', label: 'Recomendações', icon: StarIcon },
+    { to: '/emotion-detection', label: 'Detecção Emoções', icon: CameraIcon },
   ], []);
 
   const userFirstName = useMemo(() => {

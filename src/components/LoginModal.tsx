@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { useAuth } from '../hooks/useAuth';
+import { X, CheckCircle } from 'lucide-react';
+import { useEnhancedAuth } from '../hooks/useEnhancedAuth';
+import styles from './LoginModal.module.css';
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -8,155 +10,146 @@ interface LoginModalProps {
 }
 
 const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
-  const { login } = useAuth();
-  const [isLoading, setIsLoading] = useState(false);
+  const { 
+    handleLogin, 
+    isLoginLoading, 
+    loginError, 
+    loginSuccess,
+    clearError 
+  } = useEnhancedAuth();
 
   const handleGoogleLogin = async () => {
-    try {
-      setIsLoading(true);
-      await login();
-      onClose();
-    } catch (error) {
-      console.error('Erro no login:', error);
-    } finally {
-      setIsLoading(false);
+    await handleLogin();
+    if (!loginError) {
+      setTimeout(() => onClose(), 1000); // Fechar após sucesso
     }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      onClose();
+    }
+  };
+
+  const handleCloseWithClearError = () => {
+    clearError();
+    onClose();
   };
 
   if (!isOpen) return null;
 
   return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      zIndex: 1000,
-      padding: '1rem'
-    }}>
+    <motion.div 
+      className={styles.overlay}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={(e) => e.target === e.currentTarget && handleCloseWithClearError()}
+      onKeyDown={handleKeyDown}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="login-title"
+    >
       <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.8 }}
-        style={{
-          background: 'white',
-          borderRadius: '20px',
-          padding: 'clamp(2rem, 5vw, 3rem)',
-          maxWidth: '500px',
-          width: '100%',
-          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
-          position: 'relative'
-        }}
+        className={styles.modal}
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+        transition={{ type: "spring", damping: 25, stiffness: 300 }}
       >
         {/* Botão de fechar */}
         <button
-          onClick={onClose}
-          style={{
-            position: 'absolute',
-            top: '1rem',
-            right: '1rem',
-            background: 'none',
-            border: 'none',
-            fontSize: '1.5rem',
-            cursor: 'pointer',
-            color: '#64748b',
-            width: '40px',
-            height: '40px',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transition: 'all 0.2s ease'
-          }}
-          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f1f5f9'}
-          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+          className={styles.closeButton}
+          onClick={handleCloseWithClearError}
+          aria-label="Fechar modal"
         >
-          ×
+          <X size={20} />
         </button>
 
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+        <div className={styles.header}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            <h2 style={{
-              fontSize: 'clamp(1.5rem, 4vw, 2rem)',
-              fontWeight: '700',
-              color: '#1e293b',
-              marginBottom: '0.5rem'
-            }}>
+            <h2 id="login-title" className={styles.title}>
               🌟 Bem-vindo ao Essent
             </h2>
-            <p style={{
-              color: '#64748b',
-              fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
-              lineHeight: '1.5'
-            }}>
+            <p className={styles.subtitle}>
               Entre com sua conta Google para acessar todos os recursos de bem-estar e saúde mental
             </p>
           </motion.div>
         </div>
 
+        {/* Mensagem de erro */}
+        {loginError && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            style={{
+              background: 'linear-gradient(135deg, #fee2e2 0%, #fecaca 100%)',
+              color: '#dc2626',
+              padding: '12px 16px',
+              borderRadius: '12px',
+              marginBottom: '1.5rem',
+              fontSize: '0.9rem',
+              textAlign: 'center',
+              border: '1px solid #fca5a5'
+            }}
+          >
+            {loginError}
+          </motion.div>
+        )}
+
+        {/* Mensagem de sucesso */}
+        {loginSuccess && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            style={{
+              background: 'linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%)',
+              color: '#16a34a',
+              padding: '12px 16px',
+              borderRadius: '12px',
+              marginBottom: '1.5rem',
+              fontSize: '0.9rem',
+              textAlign: 'center',
+              border: '1px solid #86efac',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px'
+            }}
+          >
+            <CheckCircle size={18} />
+            Login realizado com sucesso!
+          </motion.div>
+        )}
+
         {/* Google Login Button */}
         <motion.button
+          className={styles.loginButton}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
           onClick={handleGoogleLogin}
-          disabled={isLoading}
-          style={{
-            width: '100%',
-            padding: '16px 24px',
-            background: 'linear-gradient(135deg, #4285f4 0%, #34a853 100%)',
-            border: 'none',
-            borderRadius: '12px',
-            color: 'white',
-            fontSize: 'clamp(1rem, 2.5vw, 1.1rem)',
-            fontWeight: '600',
-            cursor: isLoading ? 'not-allowed' : 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '12px',
-            transition: 'all 0.3s ease',
-            opacity: isLoading ? 0.7 : 1,
-            boxShadow: '0 4px 16px rgba(66, 133, 244, 0.3)'
-          }}
-          onMouseEnter={(e) => {
-            if (!isLoading) {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 6px 20px rgba(66, 133, 244, 0.4)';
-            }
-          }}
-          onMouseLeave={(e) => {
-            if (!isLoading) {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 16px rgba(66, 133, 244, 0.3)';
-            }
-          }}
+          disabled={isLoginLoading || loginSuccess}
+          aria-label={isLoginLoading ? "Fazendo login..." : "Entrar com Google"}
         >
-          {isLoading ? (
+          {isLoginLoading ? (
             <>
-              <div style={{
-                width: '20px',
-                height: '20px',
-                border: '2px solid #ffffff30',
-                borderTop: '2px solid white',
-                borderRadius: '50%',
-                animation: 'spin 1s linear infinite'
-              }} />
-              Conectando...
+              <div className={styles.loadingSpinner} />
+              <span className={styles.loadingText}>Conectando...</span>
+            </>
+          ) : loginSuccess ? (
+            <>
+              <CheckCircle size={22} />
+              Conectado!
             </>
           ) : (
             <>
-              <svg width="20" height="20" viewBox="0 0 24 24" style={{ flexShrink: 0 }}>
+              <svg className={styles.googleIcon} width="22" height="22" viewBox="0 0 24 24">
                 <path
                   fill="white"
                   d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -181,28 +174,17 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
         {/* Termos e condições */}
         <motion.p
+          className={styles.terms}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          style={{
-            textAlign: 'center',
-            fontSize: 'clamp(0.75rem, 2vw, 0.85rem)',
-            color: '#94a3b8',
-            marginTop: '1.5rem',
-            lineHeight: '1.5'
-          }}
         >
-          Ao continuar, você concorda com nossos termos de uso e política de privacidade
+          Ao continuar, você concorda com nossos{' '}
+          <a href="#" className={styles.termsLink}>termos de uso</a>{' '}
+          e <a href="#" className={styles.termsLink}>política de privacidade</a>
         </motion.p>
       </motion.div>
-
-      <style>{`
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-      `}</style>
-    </div>
+    </motion.div>
   );
 };
 
